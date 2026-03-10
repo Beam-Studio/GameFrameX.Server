@@ -36,14 +36,14 @@ using ProtoBuf;
 namespace GameFrameX.Proto.BuiltIn;
 
 /// <summary>
-/// 请求心跳
+/// Request heartbeat
 /// </summary>
 [ProtoContract]
 [MessageTypeHandler((-1 << 16) + 1, (byte)MessageOperationType.HeartBeat)]
 public sealed class ReqActorHeartBeat : MessageObject, IRequestMessage, IHeartBeatMessage
 {
     /// <summary>
-    /// 时间戳
+    /// Timestamp
     /// </summary>
     [ProtoMember(1)]
     public long Timestamp { get; set; }
@@ -55,14 +55,14 @@ public sealed class ReqActorHeartBeat : MessageObject, IRequestMessage, IHeartBe
 }
 
 /// <summary>
-/// 服务器通知心跳结果，因为有些业务需要对心跳结果做处理所以不做成RPC的方式处理
+/// Server heartbeat result notification; uses notify instead of RPC since some logic needs to process heartbeat results
 /// </summary>
 [ProtoContract]
 [MessageTypeHandler((-1 << 16) + 2, (byte)MessageOperationType.HeartBeat)]
 public sealed class NotifyActorHeartBeat : MessageObject, INotifyMessage, IHeartBeatMessage
 {
     /// <summary>
-    /// 时间戳
+    /// Timestamp
     /// </summary>
     [ProtoMember(1)]
     public long Timestamp { get; set; }

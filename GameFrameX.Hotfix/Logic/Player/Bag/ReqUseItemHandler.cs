@@ -33,7 +33,7 @@
 namespace GameFrameX.Hotfix.Logic.Player.Bag;
 
 /// <summary>
-/// 请求使用物品
+/// Use item request
 /// </summary>
 [MessageMapping(typeof(ReqUseItem))]
 internal sealed class ReqUseItemHandler : PlayerRpcComponentHandler<BagComponentAgent, ReqUseItem, RespUseItem>

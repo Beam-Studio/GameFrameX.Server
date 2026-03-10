@@ -37,7 +37,7 @@ namespace GameFrameX.Hotfix.Logic.Player.Login;
 public class LoginComponentAgent : StateComponentAgent<LoginComponent, LoginState>
 {
     /// <summary>
-    /// 使用角色ID登录
+    /// Login with role ID
     /// </summary>
     /// <param name="workChannel"></param>
     /// <param name="reqLogin"></param>
@@ -47,11 +47,11 @@ public class LoginComponentAgent : StateComponentAgent<LoginComponent, LoginStat
         var playerState = await OwnerComponent.OnPlayerLogin(reqLogin);
         if (playerState == null)
         {
-            //角色找不到？
+            // Role not found
             return;
         }
 
-        // 绑定玩家ID
+        // Bind player ID
         workChannel.SetData(GlobalConst.ActorIdKey, playerState.Id);
         var playerComponentAgent = await ActorManager.GetComponentAgent<PlayerComponentAgent>(playerState.Id);
         await playerComponentAgent.OnPlayerLogin(workChannel, playerState, response);

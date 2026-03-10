@@ -7,10 +7,10 @@ using GameFrameX.NetWork.Messages;
 namespace GameFrameX.Proto.Proto
 {
     /// <summary>
-    /// 请求账号登录
+    /// Request account login
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("请求账号登录")]
+    [System.ComponentModel.Description("Request account login")]
     [MessageTypeHandler(19660810)]
     public sealed class ReqLogin : MessageObject, IRequestMessage
     {
@@ -50,10 +50,10 @@ namespace GameFrameX.Proto.Proto
         public string Device { get; set; }
 
         /// <summary>
-        /// 密码
+        /// Password
         /// </summary>
         [ProtoMember(6)]
-        [System.ComponentModel.Description("密码")]
+        [System.ComponentModel.Description("Password")]
         public string Password { get; set; }
 
         public override void Clear()
@@ -68,10 +68,10 @@ namespace GameFrameX.Proto.Proto
     }
 
     /// <summary>
-    /// 请求账号登录返回
+    /// Account login response
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("请求账号登录返回")]
+    [System.ComponentModel.Description("Account login response")]
     [MessageTypeHandler(19660811)]
     public sealed class RespLogin : MessageObject, IResponseMessage
     {
@@ -83,38 +83,38 @@ namespace GameFrameX.Proto.Proto
         public int Code { get; set; }
 
         /// <summary>
-        /// 账号名
+        /// Account name
         /// </summary>
         [ProtoMember(2)]
-        [System.ComponentModel.Description("账号名")]
+        [System.ComponentModel.Description("Account name")]
         public string RoleName { get; set; }
 
         /// <summary>
-        /// 账号ID
+        /// Account ID
         /// </summary>
         [ProtoMember(3)]
-        [System.ComponentModel.Description("账号ID")]
+        [System.ComponentModel.Description("Account ID")]
         public long Id { get; set; }
 
         /// <summary>
-        /// 账号等级
+        /// Account level
         /// </summary>
         [ProtoMember(4)]
-        [System.ComponentModel.Description("账号等级")]
+        [System.ComponentModel.Description("Account level")]
         public uint Level { get; set; }
 
         /// <summary>
-        /// 创建时间
+        /// Creation time
         /// </summary>
         [ProtoMember(5)]
-        [System.ComponentModel.Description("创建时间")]
+        [System.ComponentModel.Description("Creation time")]
         public long CreateTime { get; set; }
 
         /// <summary>
-        /// 返回的错误码
+        /// Response error code
         /// </summary>
         [ProtoMember(2047)]
-        [System.ComponentModel.Description("返回的错误码")]
+        [System.ComponentModel.Description("Response error code")]
         public int ErrorCode { get; set; }
 
         public override void Clear()
@@ -129,25 +129,25 @@ namespace GameFrameX.Proto.Proto
     }
 
     /// <summary>
-    /// 请求角色创建
+    /// Request player creation
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("请求角色创建")]
+    [System.ComponentModel.Description("Request player creation")]
     [MessageTypeHandler(19660812)]
     public sealed class ReqPlayerCreate : MessageObject, IRequestMessage
     {
         /// <summary>
-        /// 账号ID
+        /// Account ID
         /// </summary>
         [ProtoMember(1)]
-        [System.ComponentModel.Description("账号ID")]
+        [System.ComponentModel.Description("Account ID")]
         public long Id { get; set; }
 
         /// <summary>
-        /// 角色名
+        /// Player name
         /// </summary>
         [ProtoMember(2)]
-        [System.ComponentModel.Description("角色名")]
+        [System.ComponentModel.Description("Player name")]
         public string Name { get; set; }
 
         public override void Clear()
@@ -158,25 +158,25 @@ namespace GameFrameX.Proto.Proto
     }
 
     /// <summary>
-    /// 请求角色创建返回
+    /// Player creation response
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("请求角色创建返回")]
+    [System.ComponentModel.Description("Player creation response")]
     [MessageTypeHandler(19660813)]
     public sealed class RespPlayerCreate : MessageObject, IResponseMessage
     {
         /// <summary>
-        /// 角色信息
+        /// Player info
         /// </summary>
         [ProtoMember(1)]
-        [System.ComponentModel.Description("角色信息")]
+        [System.ComponentModel.Description("Player info")]
         public PlayerInfo PlayerInfo { get; set; }
 
         /// <summary>
-        /// 返回的错误码
+        /// Response error code
         /// </summary>
         [ProtoMember(2047)]
-        [System.ComponentModel.Description("返回的错误码")]
+        [System.ComponentModel.Description("Response error code")]
         public int ErrorCode { get; set; }
 
         public override void Clear()
@@ -187,18 +187,18 @@ namespace GameFrameX.Proto.Proto
     }
 
     /// <summary>
-    /// 请求角色列表
+    /// Request player list
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("请求角色列表")]
+    [System.ComponentModel.Description("Request player list")]
     [MessageTypeHandler(19660814)]
     public sealed class ReqPlayerList : MessageObject, IRequestMessage
     {
         /// <summary>
-        /// 账号ID
+        /// Account ID
         /// </summary>
         [ProtoMember(1)]
-        [System.ComponentModel.Description("账号ID")]
+        [System.ComponentModel.Description("Account ID")]
         public long Id { get; set; }
 
         public override void Clear()
@@ -208,25 +208,25 @@ namespace GameFrameX.Proto.Proto
     }
 
     /// <summary>
-    /// 请求角色列表返回
+    /// Player list response
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("请求角色列表返回")]
+    [System.ComponentModel.Description("Player list response")]
     [MessageTypeHandler(19660815)]
     public sealed class RespPlayerList : MessageObject, IResponseMessage
     {
         /// <summary>
-        /// 角色列表
+        /// Player list
         /// </summary>
         [ProtoMember(1)]
-        [System.ComponentModel.Description("角色列表")]
+        [System.ComponentModel.Description("Player list")]
         public List<PlayerInfo> PlayerList { get; set; } = new List<PlayerInfo>();
 
         /// <summary>
-        /// 返回的错误码
+        /// Response error code
         /// </summary>
         [ProtoMember(2047)]
-        [System.ComponentModel.Description("返回的错误码")]
+        [System.ComponentModel.Description("Response error code")]
         public int ErrorCode { get; set; }
 
         public override void Clear()
@@ -244,61 +244,61 @@ namespace GameFrameX.Proto.Proto
     public sealed class PlayerInfo
     {
         /// <summary>
-        /// 角色ID
+        /// Player ID
         /// </summary>
         [ProtoMember(1)]
-        [System.ComponentModel.Description("角色ID")]
+        [System.ComponentModel.Description("Player ID")]
         public long Id { get; set; }
 
         /// <summary>
-        /// 角色名
+        /// Player name
         /// </summary>
         [ProtoMember(2)]
-        [System.ComponentModel.Description("角色名")]
+        [System.ComponentModel.Description("Player name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// 角色等级
+        /// Player level
         /// </summary>
         [ProtoMember(3)]
-        [System.ComponentModel.Description("角色等级")]
+        [System.ComponentModel.Description("Player level")]
         public uint Level { get; set; }
 
         /// <summary>
-        /// 角色状态
+        /// Player state
         /// </summary>
         [ProtoMember(4)]
-        [System.ComponentModel.Description("角色状态")]
+        [System.ComponentModel.Description("Player state")]
         public int State { get; set; }
 
         /// <summary>
-        /// 角色头像
+        /// Player avatar
         /// </summary>
         [ProtoMember(5)]
-        [System.ComponentModel.Description("角色头像")]
+        [System.ComponentModel.Description("Player avatar")]
         public uint Avatar { get; set; }
 
         /// <summary>
-        /// 角色当前经验
+        /// Player current experience
         /// </summary>
         [ProtoMember(6)]
-        [System.ComponentModel.Description("角色当前经验")]
+        [System.ComponentModel.Description("Player current experience")]
         public ulong CurrentExp { get; set; }
     }
 
     /// <summary>
-    /// 请求玩家登录
+    /// Request player login
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("请求玩家登录")]
+    [System.ComponentModel.Description("Request player login")]
     [MessageTypeHandler(19660816)]
     public sealed class ReqPlayerLogin : MessageObject, IRequestMessage
     {
         /// <summary>
-        /// 角色ID
+        /// Player ID
         /// </summary>
         [ProtoMember(1)]
-        [System.ComponentModel.Description("角色ID")]
+        [System.ComponentModel.Description("Player ID")]
         public long Id { get; set; }
 
         public override void Clear()
@@ -308,10 +308,10 @@ namespace GameFrameX.Proto.Proto
     }
 
     /// <summary>
-    /// 请求玩家登录返回
+    /// Player login response
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("请求玩家登录返回")]
+    [System.ComponentModel.Description("Player login response")]
     [MessageTypeHandler(19660817)]
     public sealed class RespPlayerLogin : MessageObject, IResponseMessage
     {
@@ -323,24 +323,24 @@ namespace GameFrameX.Proto.Proto
         public int Code { get; set; }
 
         /// <summary>
-        /// 创建时间
+        /// Creation time
         /// </summary>
         [ProtoMember(2)]
-        [System.ComponentModel.Description("创建时间")]
+        [System.ComponentModel.Description("Creation time")]
         public long CreateTime { get; set; }
 
         /// <summary>
-        /// 角色信息
+        /// Player info
         /// </summary>
         [ProtoMember(3)]
-        [System.ComponentModel.Description("角色信息")]
+        [System.ComponentModel.Description("Player info")]
         public PlayerInfo PlayerInfo { get; set; }
 
         /// <summary>
-        /// 返回的错误码
+        /// Response error code
         /// </summary>
         [ProtoMember(2047)]
-        [System.ComponentModel.Description("返回的错误码")]
+        [System.ComponentModel.Description("Response error code")]
         public int ErrorCode { get; set; }
 
         public override void Clear()
@@ -353,32 +353,32 @@ namespace GameFrameX.Proto.Proto
     }
 
     /// <summary>
-    /// 客户端每次请求都会回复错误码
+    /// Error code response returned for every client request
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("客户端每次请求都会回复错误码")]
+    [System.ComponentModel.Description("Error code response returned for every client request")]
     [MessageTypeHandler(19660818)]
     public sealed class RespErrorCode : MessageObject, IResponseMessage
     {
         /// <summary>
-        /// 0:表示无错误
+        /// 0: no error
         /// </summary>
         [ProtoMember(1)]
-        [System.ComponentModel.Description("0:表示无错误")]
+        [System.ComponentModel.Description("0: no error")]
         public long ErrCode { get; set; }
 
         /// <summary>
-        /// 错误描述（不为0时有效）
+        /// Error description (valid when non-zero)
         /// </summary>
         [ProtoMember(2)]
-        [System.ComponentModel.Description("错误描述（不为0时有效）")]
+        [System.ComponentModel.Description("Error description (valid when non-zero)")]
         public string Desc { get; set; }
 
         /// <summary>
-        /// 返回的错误码
+        /// Response error code
         /// </summary>
         [ProtoMember(2047)]
-        [System.ComponentModel.Description("返回的错误码")]
+        [System.ComponentModel.Description("Response error code")]
         public int ErrorCode { get; set; }
 
         public override void Clear()
@@ -398,24 +398,24 @@ namespace GameFrameX.Proto.Proto
     public sealed class RespPrompt : MessageObject, IResponseMessage
     {
         /// <summary>
-        /// 提示信息类型（1Tip提示，2跑马灯，3插队跑马灯，4弹窗，5弹窗回到登陆，6弹窗退出游戏）
+        /// Prompt type (1: tip, 2: marquee, 3: priority marquee, 4: popup, 5: popup return to login, 6: popup exit game)
         /// </summary>
         [ProtoMember(1)]
-        [System.ComponentModel.Description("提示信息类型（1Tip提示，2跑马灯，3插队跑马灯，4弹窗，5弹窗回到登陆，6弹窗退出游戏）")]
+        [System.ComponentModel.Description("Prompt type (1: tip, 2: marquee, 3: priority marquee, 4: popup, 5: popup return to login, 6: popup exit game)")]
         public int Type { get; set; }
 
         /// <summary>
-        /// 提示内容
+        /// Prompt content
         /// </summary>
         [ProtoMember(2)]
-        [System.ComponentModel.Description("提示内容")]
+        [System.ComponentModel.Description("Prompt content")]
         public string Content { get; set; }
 
         /// <summary>
-        /// 返回的错误码
+        /// Response error code
         /// </summary>
         [ProtoMember(2047)]
-        [System.ComponentModel.Description("返回的错误码")]
+        [System.ComponentModel.Description("Response error code")]
         public int ErrorCode { get; set; }
 
         public override void Clear()

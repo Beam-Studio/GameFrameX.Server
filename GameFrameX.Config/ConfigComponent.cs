@@ -42,7 +42,7 @@ public class ConfigComponent
     }
 
     /// <summary>
-    /// 获取指定全局配置项。
+    /// Gets the specified global configuration.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
@@ -62,9 +62,9 @@ public class ConfigComponent
     }
 
     /// <summary>
-    /// 检查是否存在指定全局配置项。
+    /// Checks whether the specified global configuration exists.
     /// </summary>
-    /// <returns>指定的全局配置项是否存在。</returns>
+    /// <returns>Whether the specified global configuration exists.</returns>
     public bool HasConfig<T>() where T : IDataTable
     {
         var configName = typeof(T).Name;
@@ -72,9 +72,9 @@ public class ConfigComponent
     }
 
     /// <summary>
-    /// 移除指定全局配置项。
+    /// Removes the specified global configuration.
     /// </summary>
-    /// <returns>是否移除全局配置项成功。</returns>
+    /// <returns>Whether the removal was successful.</returns>
     public bool RemoveConfig<T>() where T : IDataTable<T>
     {
         var configName = typeof(T).Name;
@@ -82,7 +82,7 @@ public class ConfigComponent
     }
 
     /// <summary>
-    /// 清空所有全局配置项。
+    /// Removes all global configurations.
     /// </summary>
     public void RemoveAllConfigs()
     {
@@ -90,7 +90,7 @@ public class ConfigComponent
     }
 
     /// <summary>
-    /// 增加
+    /// Add a configuration entry.
     /// </summary>
     /// <param name="configName"></param>
     /// <param name="dataTable"></param>

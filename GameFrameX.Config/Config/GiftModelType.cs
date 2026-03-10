@@ -14,23 +14,23 @@ namespace GameFrameX.Config
     public enum GiftModelType
     {
         /// <summary>
-        /// 不可预览
+        /// Not previewable
         /// </summary>
         Non = 0,
         /// <summary>
-        /// 单一预览
+        /// Single preview
         /// </summary>
         Single = 1,
         /// <summary>
-        /// 整套预览
+        /// Full set preview
         /// </summary>
         Complete = 2,
         /// <summary>
-        /// 分开预览
+        /// Separate preview
         /// </summary>
         Enumeration = 3,
         /// <summary>
-        /// 组合预览
+        /// Combined preview
         /// </summary>
         Combination = 4,
     }

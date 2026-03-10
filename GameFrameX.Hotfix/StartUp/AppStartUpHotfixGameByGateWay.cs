@@ -84,19 +84,19 @@ internal partial class AppStartUpHotfixGame
 
     private void GateWayClientOnError(object sender, SuperSocket.ClientEngine.ErrorEventArgs errorEventArgs)
     {
-        LogHelper.Info("和网关服务器链接链接发生错误!" + errorEventArgs);
+        LogHelper.Info("Gateway server connection error!" + errorEventArgs);
         GateWayClientOnClosed(sender, errorEventArgs);
     }
 
     private void GateWayClientOnConnected(object sender, EventArgs e)
     {
-        // 和网关服务器链接成功，关闭重连
+        // Connected to gateway server, stop reconnection
         _gateWayReconnectionTimer.Stop();
         _gateWayHeartBeatTimer.Start();
         var appSession = sender as IGameAppSession;
         var netChannel = new DefaultNetWorkChannel(appSession, messageEncoderHandler);
-        GameClientSessionManager.SetSession(appSession.SessionID, netChannel); //移除
-        LogHelper.Info("和网关服务器链接链接成功!");
+        GameClientSessionManager.SetSession(appSession.SessionID, netChannel); // Remove
+        LogHelper.Info("Gateway server connection established!");
         ReqRegisterGameServer reqRegisterGameServer = new ReqRegisterGameServer
         {
             ServerType = Setting.ServerType,
@@ -117,13 +117,13 @@ internal partial class AppStartUpHotfixGame
         {
             if (Setting.IsDebug && Setting.IsDebugReceive)
             {
-                LogHelper.Info($"收到网关服务器消息：{messageObject.ToReceiveMessageString(ServerType.Gateway, ServerType)}");
+                LogHelper.Info($"Received gateway message: {messageObject.ToReceiveMessageString(ServerType.Gateway, ServerType)}");
             }
 
             var handler = HotfixManager.GetTcpHandler(message.MessageId);
             if (handler == null)
             {
-                LogHelper.Error($"找不到[{message.MessageId}][{messageObject.GetType()}]对应的handler");
+                LogHelper.Error($"No handler found for [{message.MessageId}][{messageObject.GetType()}]");
                 return;
             }
 
@@ -136,8 +136,8 @@ internal partial class AppStartUpHotfixGame
 
     private void GateWayClientOnClosed(object sender, EventArgs eventArgs)
     {
-        LogHelper.Info("和网关服务器链接链接断开!开启重连");
-        // 和网关服务器链接断开，开启重连
+        LogHelper.Info("Gateway server disconnected! Starting reconnection.");
+        // Disconnected from gateway, start reconnection
         _gateWayReconnectionTimer.Start();
         _gateWayHeartBeatTimer.Stop();
     }

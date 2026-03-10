@@ -4,14 +4,14 @@ using GameFrameX.Core.Config;
 namespace GameFrameX.Config;
 
 /// <summary>
-/// 全局配置管理器。
+/// Global configuration manager.
 /// </summary>
 internal sealed partial class ConfigManager : IConfigManager
 {
     private readonly ConcurrentDictionary<string, IDataTable> m_ConfigDatas;
 
     /// <summary>
-    /// 初始化全局配置管理器的新实例。
+    /// Initializes a new instance of the global configuration manager.
     /// </summary>
     public ConfigManager()
     {
@@ -19,7 +19,7 @@ internal sealed partial class ConfigManager : IConfigManager
     }
 
     /// <summary>
-    /// 获取全局配置项数量。
+    /// Gets the count of global configuration entries.
     /// </summary>
     public int Count
     {
@@ -27,10 +27,10 @@ internal sealed partial class ConfigManager : IConfigManager
     }
 
     /// <summary>
-    /// 检查是否存在指定全局配置项。
+    /// Checks whether the specified global configuration exists.
     /// </summary>
-    /// <param name="configName">要检查全局配置项的名称。</param>
-    /// <returns>指定的全局配置项是否存在。</returns>
+    /// <param name="configName">The name of the configuration to check.</param>
+    /// <returns>Whether the specified global configuration exists.</returns>
     public bool HasConfig(string configName)
     {
         return m_ConfigDatas.TryGetValue(configName, out _);
@@ -38,11 +38,11 @@ internal sealed partial class ConfigManager : IConfigManager
 
 
     /// <summary>
-    /// 增加指定全局配置项。
+    /// Adds the specified global configuration entry.
     /// </summary>
-    /// <param name="configName">要增加全局配置项的名称。</param>
-    /// <param name="configValue">全局配置项的值。</param>
-    /// <returns>是否增加全局配置项成功。</returns>
+    /// <param name="configName">The name of the configuration to add.</param>
+    /// <param name="configValue">The configuration value.</param>
+    /// <returns>Whether the addition was successful.</returns>
     public void AddConfig(string configName, IDataTable configValue)
     {
         var isExist = m_ConfigDatas.TryGetValue(configName, out var value);
@@ -55,9 +55,9 @@ internal sealed partial class ConfigManager : IConfigManager
     }
 
     /// <summary>
-    /// 移除指定全局配置项。
+    /// Removes the specified global configuration entry.
     /// </summary>
-    /// <param name="configName">要移除全局配置项的名称。</param>
+    /// <param name="configName">The name of the configuration to remove.</param>
     public bool RemoveConfig(string configName)
     {
         if (!HasConfig(configName))
@@ -69,17 +69,17 @@ internal sealed partial class ConfigManager : IConfigManager
     }
 
     /// <summary>
-    /// 获取指定全局配置项。
+    /// Gets the specified global configuration entry.
     /// </summary>
-    /// <param name="configName">要获取全局配置项的名称。</param>
-    /// <returns>要获取全局配置项的全局配置项。</returns>
+    /// <param name="configName">The name of the configuration to get.</param>
+    /// <returns>The configuration entry, or null if not found.</returns>
     public IDataTable GetConfig(string configName)
     {
         return m_ConfigDatas.TryGetValue(configName, out var value) ? value : null; //GetConfig()
     }
 
     /// <summary>
-    /// 清空所有全局配置项。
+    /// Removes all global configuration entries.
     /// </summary>
     public void RemoveAllConfigs()
     {

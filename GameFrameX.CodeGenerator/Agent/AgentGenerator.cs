@@ -56,7 +56,7 @@ public class AgentGenerator : ISourceGenerator
                     outFileName = $"{info.Name}.g.cs";
                 }
 
-                //处理Using
+                // Process usings
                 var root = agent.SyntaxTree.GetCompilationUnitRoot();
                 foreach (var element in root.Usings)
                 {
@@ -76,7 +76,7 @@ public class AgentGenerator : ISourceGenerator
                         }
 
                         var mth = new MthInfo();
-                        //修饰符
+                        // Modifiers
                         foreach (var m in method.Modifiers)
                         {
                             if (m.Text.Equals("virtual"))
@@ -111,7 +111,7 @@ public class AgentGenerator : ISourceGenerator
                         }
 
                         mth.ReturnType = method.ReturnType?.ToString() ?? "void"; //Task<T>
-                        //遍历注解
+                        // Iterate attributes
                         foreach (var attributeListSyntax in method.AttributeLists)
                         {
                             var attrName = attributeListSyntax.ToString().RemoveWhitespace() + "Attribute";
@@ -150,21 +150,21 @@ public class AgentGenerator : ISourceGenerator
 
                         if (mth.IsThreadSafe && mth.HasTimeout)
                         {
-                            context.LogError($"{fullName}.{method.Identifier.Text}无法为标记【{threadSafeAttributeName}】的函数指定超时时间");
+                            context.LogError($"{fullName}.{method.Identifier.Text} cannot specify timeout for methods marked with [{threadSafeAttributeName}]");
                         }
 
                         if (!mth.IsApi && !mth.Discard && mth.HasTimeout)
                         {
-                            context.LogError($"{fullName}.{method.Identifier.Text}【{timeOutAttributeName}】注解只能配合【Api】或【{discardAttributeName}】使用");
+                            context.LogError($"{fullName}.{method.Identifier.Text} [{timeOutAttributeName}] attribute can only be used with [Api] or [{discardAttributeName}]");
                         }
 
-                        //跳过没有标记任何注解的函数
+                        // Skip methods without any attributes
                         if (!mth.IsApi && !mth.Discard && !mth.IsThreadSafe)
                         {
                             continue;
                         }
 
-                        //线程安全且没有丢弃直接跳过
+                        // Skip if thread-safe but not discarded
                         if (mth.IsThreadSafe && !mth.Discard)
                         {
                             continue;
@@ -172,12 +172,12 @@ public class AgentGenerator : ISourceGenerator
 
                         if (mth.IsApi && !mth.IsThreadSafe && !mth.ReturnType.Contains("Task"))
                         {
-                            context.LogError($"{fullName}.{method.Identifier.Text}, 非【{threadSafeAttributeName}】的【Api】接口只能是异步函数");
+                            context.LogError($"{fullName}.{method.Identifier.Text}, non-[{threadSafeAttributeName}] [Api] methods must be async");
                         }
 
                         if ((mth.IsApi || mth.Discard || mth.IsThreadSafe) && !mth.IsVirtual)
                         {
-                            context.LogError($"{fullName}.{method.Identifier.Text}标记了【AsyncApi】【{threadSafeAttributeName}】【{discardAttributeName}】注解的函数必须申明为virtual");
+                            context.LogError($"{fullName}.{method.Identifier.Text} methods marked with [AsyncApi], [{threadSafeAttributeName}], or [{discardAttributeName}] must be declared as virtual");
                         }
 
                         if (mth.IsVirtual)
@@ -188,7 +188,7 @@ public class AgentGenerator : ISourceGenerator
                             // mth.ReturnType = method.ReturnType.ToString();   //Task<T>
                             if (mth.Discard && !mth.ReturnType.Equals(nameof(Task)) && !mth.ReturnType.Equals(nameof(ValueTask)))
                             {
-                                context.LogError($"{fullName}.{method.Identifier.Text}只有返回值为Task类型或ValueTask类型才能添加【Discard】注解");
+                                context.LogError($"{fullName}.{method.Identifier.Text} [Discard] attribute can only be applied to methods returning Task or ValueTask");
                             }
 
                             mth.Constraint = method.ConstraintClauses.ToString(); //where T : class, new() where K : BagState

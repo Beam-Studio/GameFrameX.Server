@@ -34,11 +34,11 @@
 namespace GameFrameX.Hotfix.Logic.Http;
 
 /// <summary>
-/// 热更新
+/// Hot reload
 /// http://localhost:20001/game/api/Reload?version=1.0.0
 /// </summary>
 [HttpMessageMapping(typeof(ReloadHttpHandler))]
-[Description("热更新")]
+[Description("Hot reload")]
 public sealed class ReloadHttpHandler : BaseHttpHandler
 {
     /// <summary>

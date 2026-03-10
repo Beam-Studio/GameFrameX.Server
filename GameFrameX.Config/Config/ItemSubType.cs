@@ -14,27 +14,27 @@ namespace GameFrameX.Config
     public enum ItemSubType
     {
         /// <summary>
-        /// 无
+        /// None
         /// </summary>
         NONE = 0,
         /// <summary>
-        /// 武器
+        /// Weapon
         /// </summary>
         WEAPON = 1,
         /// <summary>
-        /// 胸
+        /// Chest
         /// </summary>
         CHEST = 2,
         /// <summary>
-        /// 腰带
+        /// Belt
         /// </summary>
         BELT = 3,
         /// <summary>
-        /// 鞋子
+        /// Boots
         /// </summary>
         BOOT = 4,
         /// <summary>
-        /// 戒指
+        /// Ring
         /// </summary>
         RING = 5,
     }

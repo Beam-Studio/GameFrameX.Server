@@ -14,23 +14,23 @@ namespace GameFrameX.Config
     public enum ItemLevelColor
     {
         /// <summary>
-        /// 蓝色
+        /// Blue
         /// </summary>
         B = 0,
         /// <summary>
-        /// 紫色
+        /// Purple
         /// </summary>
         A = 1,
         /// <summary>
-        /// 橙色
+        /// Orange
         /// </summary>
         S = 2,
         /// <summary>
-        /// 红色
+        /// Red
         /// </summary>
         SR = 3,
         /// <summary>
-        /// 金色
+        /// Gold
         /// </summary>
         SSR = 4,
     }

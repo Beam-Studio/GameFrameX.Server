@@ -14,19 +14,19 @@ namespace GameFrameX.Config
     public enum ItemUseLimiteType
     {
         /// <summary>
-        /// 无限制
+        /// No limit
         /// </summary>
         NOLIMITE = 0,
         /// <summary>
-        /// 日限制
+        /// Daily limit
         /// </summary>
         DAYLIMITE = 1,
         /// <summary>
-        /// vip限制
+        /// VIP limit
         /// </summary>
         VIPLIMITE = 2,
         /// <summary>
-        /// 周限制
+        /// Weekly limit
         /// </summary>
         WEEK6LIMITE = 3,
     }

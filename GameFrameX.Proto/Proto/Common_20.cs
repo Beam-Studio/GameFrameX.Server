@@ -7,21 +7,21 @@ using GameFrameX.NetWork.Messages;
 namespace GameFrameX.Proto.Proto
 {
     /// <summary>
-    /// 返回码
+    /// Result code
     /// </summary>
-    [System.ComponentModel.Description("返回码")]
+    [System.ComponentModel.Description("Result code")]
     public enum ResultCode
     {
         /// <summary>
-        /// 成功
+        /// Success
         /// </summary>
-        [System.ComponentModel.Description("成功")]
+        [System.ComponentModel.Description("Success")]
         Success = 0,
 
         /// <summary>
-        /// 失败
+        /// Failed
         /// </summary>
-        [System.ComponentModel.Description("失败")]
+        [System.ComponentModel.Description("Failed")]
         Failed = 1,
     }
 
@@ -32,9 +32,9 @@ namespace GameFrameX.Proto.Proto
     public enum PhoneType
     {
         /// <summary>
-        /// 手机
+        /// Mobile phone
         /// </summary>
-        [System.ComponentModel.Description("手机")]
+        [System.ComponentModel.Description("Mobile phone")]
         Mobile = 0,
 
         /// <summary>
@@ -44,106 +44,106 @@ namespace GameFrameX.Proto.Proto
         Home = 1,
 
         /// <summary>
-        /// 工作号码
+        /// Work number
         /// </summary>
-        [System.ComponentModel.Description("工作号码")]
+        [System.ComponentModel.Description("Work number")]
         Work = 2,
     }
 
     /// <summary>
-    /// 操作错误代码
+    /// Operation status code
     /// </summary>
-    [System.ComponentModel.Description("操作错误代码")]
+    [System.ComponentModel.Description("Operation status code")]
     public enum OperationStatusCode
     {
         /// <summary>
-        /// 成功
+        /// Success
         /// </summary>
-        [System.ComponentModel.Description("成功")]
+        [System.ComponentModel.Description("Success")]
         Ok = 0,
 
         /// <summary>
-        /// 配置表错误
+        /// Configuration error
         /// </summary>
-        [System.ComponentModel.Description("配置表错误")]
+        [System.ComponentModel.Description("Configuration error")]
         ConfigErr = 1,
 
         /// <summary>
-        /// 客户端传递参数错误
+        /// Invalid client parameter
         /// </summary>
-        [System.ComponentModel.Description("客户端传递参数错误")]
+        [System.ComponentModel.Description("Invalid client parameter")]
         ParamErr = 2,
 
         /// <summary>
-        /// 消耗不足
+        /// Insufficient resources
         /// </summary>
-        [System.ComponentModel.Description("消耗不足")]
+        [System.ComponentModel.Description("Insufficient resources")]
         CostNotEnough = 3,
 
         /// <summary>
-        /// 未开通服务
+        /// Service not enabled
         /// </summary>
-        [System.ComponentModel.Description("未开通服务")]
+        [System.ComponentModel.Description("Service not enabled")]
         Forbidden = 4,
 
         /// <summary>
-        /// 不存在
+        /// Not found
         /// </summary>
-        [System.ComponentModel.Description("不存在")]
+        [System.ComponentModel.Description("Not found")]
         NotFound = 5,
 
         /// <summary>
-        /// 已经存在
+        /// Already exists
         /// </summary>
-        [System.ComponentModel.Description("已经存在")]
+        [System.ComponentModel.Description("Already exists")]
         HasExist = 6,
 
         /// <summary>
-        /// 账号不存在或为空
+        /// Account not found or empty
         /// </summary>
-        [System.ComponentModel.Description("账号不存在或为空")]
+        [System.ComponentModel.Description("Account not found or empty")]
         AccountCannotBeNull = 7,
 
         /// <summary>
-        /// 无法执行数据库修改
+        /// Unable to execute database modification
         /// </summary>
-        [System.ComponentModel.Description("无法执行数据库修改")]
+        [System.ComponentModel.Description("Unable to execute database modification")]
         Unprocessable = 8,
 
         /// <summary>
-        /// 未知平台
+        /// Unknown platform
         /// </summary>
-        [System.ComponentModel.Description("未知平台")]
+        [System.ComponentModel.Description("Unknown platform")]
         UnknownPlatform = 9,
 
         /// <summary>
-        /// 正常通知
+        /// Normal notification
         /// </summary>
-        [System.ComponentModel.Description("正常通知")]
+        [System.ComponentModel.Description("Normal notification")]
         Notice = 10,
 
         /// <summary>
-        /// 功能未开启，主消息屏蔽
+        /// Feature not enabled, main message blocked
         /// </summary>
-        [System.ComponentModel.Description("功能未开启，主消息屏蔽")]
+        [System.ComponentModel.Description("Feature not enabled, main message blocked")]
         FuncNotOpen = 11,
 
         /// <summary>
-        /// 其他
+        /// Other
         /// </summary>
-        [System.ComponentModel.Description("其他")]
+        [System.ComponentModel.Description("Other")]
         Other = 12,
 
         /// <summary>
-        /// 内部服务错误
+        /// Internal server error
         /// </summary>
-        [System.ComponentModel.Description("内部服务错误")]
+        [System.ComponentModel.Description("Internal server error")]
         InternalServerError = 13,
 
         /// <summary>
-        /// 通知客户端服务器人数已达上限
+        /// Notify client that server capacity is full
         /// </summary>
-        [System.ComponentModel.Description("通知客户端服务器人数已达上限")]
+        [System.ComponentModel.Description("Notify client that server capacity is full")]
         ServerFullyLoaded = 14,
     }
 

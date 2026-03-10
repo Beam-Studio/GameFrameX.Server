@@ -40,12 +40,12 @@ using GameFrameX.Hotfix.Logic.Player.Bag;
 namespace GameFrameX.Hotfix.Logic.Http.Bag;
 
 /// <summary>
-/// 请求给玩家发送道具
+/// Send items to player
 /// </summary>
 [HttpMessageMapping(typeof(ReqPlayerSendItemHttpHandler))]
 [HttpMessageRequest(typeof(ReqPlayerSendItemRequest))]
 [HttpMessageResponse(typeof(ReqPlayerSendItemResponse))]
-[Description("请求给玩家发送道具")]
+[Description("Send items to player")]
 public sealed class ReqPlayerSendItemHttpHandler : BaseHttpHandler
 {
     public override async Task<string> Action(string ip, string url, HttpMessageRequestBase requestBase)
@@ -68,18 +68,18 @@ public sealed class ReqPlayerSendItemHttpHandler : BaseHttpHandler
             }
         }
 
-        // 发送道具事件
+        // Send item event
         var playerSendItemEventData = new PlayerSendItemEventArgs(request.RoleId, itemDic);
         EventDispatcher.Dispatch(request.RoleId, (int)EventId.PlayerSendItem, playerSendItemEventData);
         if (playerSession.IsNotNull())
         {
-            // 玩家在线
+            // Player is online
             var bagComponentAgent = await ActorManager.GetComponentAgent<BagComponentAgent>(request.RoleId);
             await bagComponentAgent.UpdateChanged(playerSession.WorkChannel, itemDic);
         }
         else
         {
-            // 玩家不在线
+            // Player is offline
             var bagState = await GameDb.FindAsync<BagState>(request.RoleId);
 
             foreach (var item in itemDic)
@@ -113,14 +113,14 @@ public sealed class ReqPlayerSendItemHttpHandler : BaseHttpHandler
 public sealed class ReqPlayerSendItemRequest : HttpMessageRequestBase
 {
     [Required]
-    [Description("角色ID")]
+    [Description("Role ID")]
     [Range(1, long.MaxValue)]
     public long RoleId { get; set; }
 
-    [Required] [Description("道具列表")] public Dictionary<int, long> Items { get; set; } = new Dictionary<int, long>();
+    [Required] [Description("Item list")] public Dictionary<int, long> Items { get; set; } = new Dictionary<int, long>();
 }
 
 public sealed class ReqPlayerSendItemResponse : HttpMessageResponseBase
 {
-    [Description("成功的道具列表")] public Dictionary<int, long> Items { get; set; } = new Dictionary<int, long>();
+    [Description("Successfully sent item list")] public Dictionary<int, long> Items { get; set; } = new Dictionary<int, long>();
 }

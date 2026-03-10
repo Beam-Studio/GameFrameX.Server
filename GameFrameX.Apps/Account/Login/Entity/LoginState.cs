@@ -34,32 +34,32 @@ namespace GameFrameX.Apps.Account.Login.Entity;
 public class LoginState : CacheState
 {
     /// <summary>
-    /// 昵称
+    /// Nickname
     /// </summary>
     public string NickName { get; set; }
 
     /// <summary>
-    /// 用户名
+    /// Username
     /// </summary>
     public string UserName { get; set; }
 
     /// <summary>
-    /// 密码
+    /// Password
     /// </summary>
     public string Password { get; set; }
 
     /// <summary>
-    /// 用户状态
+    /// User state
     /// </summary>
     public int State { get; set; }
 
     /// <summary>
-    /// 等级
+    /// Level
     /// </summary>
     public uint Level { get; set; }
 
     /// <summary>
-    /// //是否是重连
+    /// Whether this is a reconnection
     /// </summary>
     public bool isReconnect { get; set; }
 

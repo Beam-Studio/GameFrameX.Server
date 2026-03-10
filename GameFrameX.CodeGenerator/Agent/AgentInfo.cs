@@ -6,18 +6,18 @@ namespace GameFrameX.CodeGenerator.Agent;
 public class MthInfo
 {
     /// <summary>
-    ///     方法名
+    ///     Method name
     /// </summary>
     public string Name { get; set; }
 
     /// <summary>
-    ///     返回类型
+    ///     Return type
     /// </summary>
     public string ReturnType { get; set; }
 
 
     /// <summary>
-    /// 函数签名
+    /// Method signature
     /// </summary>
     public string Declare
     {
@@ -37,76 +37,76 @@ public class MthInfo
     }
 
     /// <summary>
-    ///     是否是Api
+    ///     Whether it is an API
     /// </summary>
     public bool IsApi { get; set; }
 
     /// <summary>
-    ///     是否修改
+    ///     Modifier string
     /// </summary>
     public string Modify { get; set; }
 
     /// <summary>
-    ///     是否公开
+    ///     Whether it is public
     /// </summary>
     public bool IsPublic { get; set; }
 
     /// <summary>
-    ///     是否静态
+    ///     Whether it is static
     /// </summary>
     public bool IsStatic { get; set; }
 
     /// <summary>
-    ///     是否虚方法
+    ///     Whether it is virtual
     /// </summary>
     public bool IsVirtual { get; set; }
 
     /// <summary>
-    ///     是否异步
+    ///     Whether it is async
     /// </summary>
     public bool IsAsync { get; set; }
 
     public List<string> Params { get; } = new();
 
     /// <summary>
-    /// 属性标记列表
+    /// Attribute list
     /// </summary>
     public List<string> AttributeList { get; private set; } = new();
 
     public bool Discard { get; set; }
 
     /// <summary>
-    ///     是否有超时
+    ///     Whether it has a timeout
     /// </summary>
     public bool HasTimeout { get; set; }
 
     /// <summary>
-    ///     超时时间
+    ///     Timeout duration
     /// </summary>
     public int TimeOut { get; set; } = int.MaxValue;
 
     /// <summary>
-    ///     是否线程安全
+    ///     Whether it is thread-safe
     /// </summary>
     public bool IsThreadSafe { get; set; }
 
     /// <summary>
-    ///     约束
+    ///     Constraints
     /// </summary>
     public string Constraint { get; set; }
 
     /// <summary>
-    ///     泛型参数
+    ///     Type parameters
     /// </summary>
     public string Typeparams { get; set; }
 
     /// <summary>
-    ///     参数声明
+    ///     Parameter declaration
     /// </summary>
     public string ParamDeclare { get; set; }
 
     /// <summary>
-    ///     参数字符串
+    ///     Parameter string
     /// </summary>
     public string ParamString
     {
@@ -135,32 +135,32 @@ public class MthInfo
 public class AgentInfo
 {
     /// <summary>
-    ///     命名空间
+    ///     Namespace
     /// </summary>
     public string Space { get; set; }
 
     /// <summary>
-    /// 分部类
+    /// Partial class
     /// </summary>
     public string Partial { get; set; } = "";
 
     /// <summary>
-    ///     类名
+    ///     Class name
     /// </summary>
     public string Name { get; set; }
 
     /// <summary>
-    ///     父类
+    ///     Base class
     /// </summary>
     public string Super { get; set; }
 
     /// <summary>
-    ///     方法列表
+    ///     Method list
     /// </summary>
     public List<MthInfo> Methods { get; set; } = new();
 
     /// <summary>
-    ///     用到的命名空间
+    ///     Referenced namespaces
     /// </summary>
     public List<string> UsingSpaces { get; set; } = new();
 }

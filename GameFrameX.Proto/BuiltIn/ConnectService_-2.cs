@@ -36,19 +36,19 @@ using ProtoBuf;
 namespace GameFrameX.Proto.BuiltIn;
 
 /// <summary>
-/// 请求链接的服务
+/// Request to connect to a service
 /// </summary>
 [MessageTypeHandler(((-2) << 16) + 100, (byte)MessageOperationType.ConnectService)]
 public partial class ReqConnectServer : MessageObject, IRequestMessage
 {
     /// <summary>
-    ///  服务器类型
+    /// Server type
     /// </summary>
     [ProtoMember(1)]
     public string ServerType { get; set; }
 
     /// <summary>
-    /// 服务器ID
+    /// Server ID
     /// </summary>
     [ProtoMember(2)]
     public long ServerId { get; set; }
@@ -61,13 +61,13 @@ public partial class ReqConnectServer : MessageObject, IRequestMessage
 }
 
 /// <summary>
-/// 请求链接的服务返回
+/// Response for connect to service request
 /// </summary>
 [MessageTypeHandler(((-2) << 16) + 101, (byte)MessageOperationType.ConnectService)]
 public partial class RespConnectServer : MessageObject, IResponseMessage
 {
     /// <summary>
-    /// 是否成功
+    /// Whether the operation succeeded
     /// </summary>
     public bool IsSuccess
     {
@@ -75,37 +75,37 @@ public partial class RespConnectServer : MessageObject, IResponseMessage
     }
 
     /// <summary>
-    ///  服务器类型
+    /// Server type
     /// </summary>
     [ProtoMember(1)]
     public string ServerType { get; set; }
 
     /// <summary>
-    /// 服务器名称
+    /// Server name
     /// </summary>
     [ProtoMember(2)]
     public string ServerName { get; set; }
 
     /// <summary>
-    /// 服务器ID
+    /// Server ID
     /// </summary>
     [ProtoMember(3)]
     public long ServerId { get; set; }
 
     /// <summary>
-    /// 服务器地址
+    /// Server address
     /// </summary>
     [ProtoMember(5)]
     public string TargetHost { get; set; }
 
     /// <summary>
-    /// 服务器端口
+    /// Server port
     /// </summary>
     [ProtoMember(6)]
     public ushort TargetPort { get; set; }
 
     /// <summary>
-    /// 返回的错误码
+    /// Response error code
     /// </summary>
     [ProtoMember(888)]
     public int ErrorCode { get; set; }

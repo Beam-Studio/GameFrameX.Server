@@ -33,7 +33,7 @@
 namespace GameFrameX.Hotfix.Logic.Player.Bag;
 
 /// <summary>
-/// 增加背包物品
+/// Add bag items
 /// </summary>
 [MessageMapping(typeof(ReqAddItem))]
 internal sealed class ReqAddItemHandler : PlayerRpcComponentHandler<BagComponentAgent, ReqAddItem, RespAddItem>

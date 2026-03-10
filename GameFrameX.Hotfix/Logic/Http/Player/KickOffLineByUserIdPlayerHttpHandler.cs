@@ -36,12 +36,12 @@ using GameFrameX.Apps.Common.Session;
 namespace GameFrameX.Hotfix.Logic.Http.Player;
 
 /// <summary>
-/// 将指定角色的玩家从当前服务断开
+/// Disconnect the player with the specified role from the current server
 /// http://localhost:20001/game/api/KickOffLineByUserIdPlayer
 /// </summary>
 [HttpMessageMapping(typeof(KickOffLineByUserIdPlayerHttpHandler))]
 [HttpMessageRequest(typeof(KickOffLineByUserIdPlayerRequest))]
-[Description("将指定角色的玩家从当前服务断开")]
+[Description("Disconnect the player with the specified role from the current server")]
 public sealed class KickOffLineByUserIdPlayerHttpHandler : BaseHttpHandler
 {
     /// <summary>
@@ -61,9 +61,9 @@ public sealed class KickOffLineByUserIdPlayerHttpHandler : BaseHttpHandler
 public sealed class KickOffLineByUserIdPlayerRequest : HttpMessageRequestBase
 {
     /// <summary>
-    /// 角色Id
+    /// Role ID
     /// </summary>
-    [Description("角色Id")]
+    [Description("Role ID")]
     [Required]
     [Range(1, long.MaxValue)]
     public long RoleId { get; set; }

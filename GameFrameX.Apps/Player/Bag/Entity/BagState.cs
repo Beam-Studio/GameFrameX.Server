@@ -36,7 +36,7 @@ namespace GameFrameX.Apps.Player.Bag.Entity;
 public sealed class BagState : CacheState
 {
     /// <summary>
-    /// 背包物品
+    /// Bag items
     /// </summary>
     public Dictionary<int, BagItemState> List { get; set; } = new Dictionary<int, BagItemState>();
 }
@@ -44,12 +44,12 @@ public sealed class BagState : CacheState
 public sealed class BagItemState
 {
     /// <summary>
-    /// 物品ID
+    /// Item ID
     /// </summary>
     public long ItemId { get; set; }
 
     /// <summary>
-    /// 物品数量
+    /// Item count
     /// </summary>
     public long Count { get; set; }
 }

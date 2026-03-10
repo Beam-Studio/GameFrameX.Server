@@ -111,7 +111,7 @@ public static class BsonClassMapHelper
     }
 
     /// <summary>
-    /// 提前注册,简化多态类型处理
+    /// Pre-register all classes to simplify polymorphic type handling
     /// </summary>
     /// <param name="assembly"></param>
     public static void RegisterAllClass(Assembly assembly)

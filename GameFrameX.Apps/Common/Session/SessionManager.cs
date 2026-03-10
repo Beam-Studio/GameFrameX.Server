@@ -41,27 +41,27 @@ using GameFrameX.Utility.Setting;
 namespace GameFrameX.Apps.Common.Session;
 
 /// <summary>
-/// 管理玩家session，一个玩家一个，下线之后移除，顶号之后释放之前的channel，替换channel
+/// Manages player sessions (one per player). Removed on logout; on displacement, the old channel is released and replaced.
 /// </summary>
 public static class SessionManager
 {
     private static readonly ConcurrentDictionary<string, Session> SessionMap = new();
 
     /// <summary>
-    /// 获取当前在线玩家的数量。
+    /// Get the number of currently online players.
     /// </summary>
-    /// <returns>当前在线玩家的数量。</returns>
+    /// <returns>The number of currently online players.</returns>
     public static int Count()
     {
         return SessionMap.Count;
     }
 
     /// <summary>
-    /// 获取分页的玩家列表。
+    /// Get a paginated list of player sessions.
     /// </summary>
-    /// <param name="pageSize">每页的玩家数量。</param>
-    /// <param name="pageIndex">当前页的索引，从0开始。</param>
-    /// <returns>指定页的玩家会话列表。</returns>
+    /// <param name="pageSize">Number of players per page.</param>
+    /// <param name="pageIndex">Zero-based page index.</param>
+    /// <returns>List of player sessions for the specified page.</returns>
     public static List<Session> GetPageList(int pageSize, int pageIndex)
     {
         var result = SessionMap.Values.OrderBy(m => m.CreateTime)
@@ -73,9 +73,9 @@ public static class SessionManager
     }
 
     /// <summary>
-    /// 踢掉指定角色ID的玩家，移除其会话。
+    /// Kick the player with the specified role ID and remove their session.
     /// </summary>
-    /// <param name="roleId">要踢掉的玩家的角色ID。</param>
+    /// <param name="roleId">The role ID of the player to kick.</param>
     public static void KickOffLineByUserId(long roleId)
     {
         var roleSession = Get(m => m.PlayerId == roleId);
@@ -89,11 +89,11 @@ public static class SessionManager
     }
 
     /// <summary>
-    /// 根据角色ID获取对应的会话对象。
-    /// 会话对象必须已经存在才会返回。
+    /// Get the session for the given role ID.
+    /// Returns the session only if it already exists.
     /// </summary>
-    /// <param name="roleId">角色ID。</param>
-    /// <returns>对应的会话对象，如果不存在则返回null。</returns>
+    /// <param name="roleId">Role ID.</param>
+    /// <returns>The corresponding session, or null if not found.</returns>
     public static Session GetByRoleId(long roleId)
     {
         var roleSession = Get(m => m.PlayerId == roleId);
@@ -106,10 +106,10 @@ public static class SessionManager
     }
 
     /// <summary>
-    /// 根据会话ID获取连接的会话对象。
+    /// Get a session by its session ID.
     /// </summary>
-    /// <param name="sessionId">会话ID。</param>
-    /// <returns>对应的会话对象，如果不存在则返回null。</returns>
+    /// <param name="sessionId">Session ID.</param>
+    /// <returns>The corresponding session, or null if not found.</returns>
     public static Session Get(string sessionId)
     {
         SessionMap.TryGetValue(sessionId, out var value);
@@ -117,30 +117,30 @@ public static class SessionManager
     }
 
     /// <summary>
-    /// 根据指定的查询条件获取会话对象。
+    /// Get a session matching the specified predicate.
     /// </summary>
-    /// <param name="predicate">查询条件的委托。</param>
-    /// <returns>符合条件的会话对象，如果不存在则返回null。</returns>
+    /// <param name="predicate">Filter predicate.</param>
+    /// <returns>The matching session, or null if not found.</returns>
     public static Session Get(Func<Session, bool> predicate)
     {
         return SessionMap.Values.FirstOrDefault(predicate);
     }
 
     /// <summary>
-    /// 根据指定的查询条件获取会话对象列表。
+    /// Get a list of sessions matching the specified predicate.
     /// </summary>
-    /// <param name="predicate">查询条件的委托。</param>
-    /// <returns>符合条件的会话对象列表。</returns>
+    /// <param name="predicate">Filter predicate.</param>
+    /// <returns>List of matching sessions.</returns>
     public static List<Session> GetList(Func<Session, bool> predicate)
     {
         return SessionMap.Values.Where(predicate).ToList();
     }
 
     /// <summary>
-    /// 移除指定会话ID的玩家。
+    /// Remove the session with the specified session ID.
     /// </summary>
-    /// <param name="sessionId">要移除的会话ID。</param>
-    /// <returns>被移除的会话对象，如果不存在则返回null。</returns>
+    /// <param name="sessionId">The session ID to remove.</param>
+    /// <returns>The removed session, or null if not found.</returns>
     public static Session Remove(string sessionId)
     {
         if (SessionMap.TryRemove(sessionId, out var value) && ActorManager.HasActor(value.PlayerId))
@@ -152,9 +152,9 @@ public static class SessionManager
     }
 
     /// <summary>
-    /// 移除所有在线玩家的会话。
+    /// Remove all online player sessions.
     /// </summary>
-    /// <returns>一个表示异步操作的任务。</returns>
+    /// <returns>A task representing the asynchronous operation.</returns>
     public static Task RemoveAll()
     {
         foreach (var session in SessionMap.Values)
@@ -170,10 +170,10 @@ public static class SessionManager
     }
 
     /// <summary>
-    /// 获取指定会话ID的网络连接通道。
+    /// Get the network channel for the specified session ID.
     /// </summary>
-    /// <param name="sessionId">会话ID。</param>
-    /// <returns>对应的网络连接通道，如果不存在则返回null。</returns>
+    /// <param name="sessionId">Session ID.</param>
+    /// <returns>The corresponding network channel, or null if not found.</returns>
     public static INetWorkChannel GetChannel(string sessionId)
     {
         SessionMap.TryGetValue(sessionId, out var session);
@@ -181,9 +181,9 @@ public static class SessionManager
     }
 
     /// <summary>
-    /// 添加新的连接会话。
+    /// Add a new session.
     /// </summary>
-    /// <param name="session">要添加的会话对象。</param>
+    /// <param name="session">The session to add.</param>
     public static void Add(Session session)
     {
         session.WorkChannel.SetData(GlobalConst.SessionIdKey, session.SessionId);
@@ -191,34 +191,34 @@ public static class SessionManager
     }
 
     /// <summary>
-    /// 更新会话，处理角色ID和签名的更新。
-    /// 如果角色ID已在其他设备上登录，则会通知旧会话并关闭其连接。
+    /// Update a session's role ID and sign.
+    /// If the role ID is already logged in on another device, the old session is notified and its connection is closed.
     /// </summary>
-    /// <param name="sessionId">会话ID，用于标识当前会话</param>
-    /// <param name="roleId">角色ID，表示当前会话所关联的角色</param>
-    /// <param name="sign">签名，用于验证会话的唯一性</param>
+    /// <param name="sessionId">Session ID identifying the current session</param>
+    /// <param name="roleId">Role ID associated with the current session</param>
+    /// <param name="sign">Sign used to verify session uniqueness</param>
     public static async void UpdateSession(string sessionId, long roleId, string sign)
     {
-        // 获取与角色ID关联的旧会话
+        // Get the old session associated with this role ID
         var oldSession = GetByRoleId(roleId);
         if (oldSession != null)
         {
-            // 创建提示消息，通知用户其账号已在其他设备上登录
+            // Create a prompt message to notify the user that their account is logged in on another device
             var msg = new RespPrompt
             {
                 Type = 5,
-                Content = "你的账号已在其他设备上登陆",
+                Content = "Your account has been logged in on another device",
             };
-            // 发送消息给旧会话
+            // Send message to the old session
             await oldSession.WriteAsync(msg);
-            // 清除旧会话的连接数据并关闭连接
+            // Clear old session connection data and close the connection
             oldSession.WorkChannel.ClearData();
             oldSession.WorkChannel.Close();
-            // 这里先移除，等待Disconnected回调断开在移除的话有延迟
+            // Remove immediately; waiting for the Disconnected callback would introduce a delay
             Remove(oldSession.SessionId);
         }
 
-        // 获取当前会话并更新角色ID和签名
+        // Get the current session and update its role ID and sign
         var session = Get(sessionId);
         if (session.IsNull())
         {

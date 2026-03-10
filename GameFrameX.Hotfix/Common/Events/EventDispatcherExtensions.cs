@@ -9,19 +9,19 @@ namespace GameFrameX.Hotfix.Common.Events;
 public static class EventDispatcherExtensions
 {
     /// <summary>
-    /// 分发事件
+    /// Dispatch event
     /// </summary>
-    /// <param name="agent">代理对象</param>
-    /// <param name="eventId">事件ID</param>
-    /// <param name="gameEventArgs">事件参数,可以为null</param>
+    /// <param name="agent">Agent object</param>
+    /// <param name="eventId">Event ID</param>
+    /// <param name="gameEventArgs">Event arguments, can be null</param>
     public static void Dispatch(this IComponentAgent agent, int eventId, GameEventArgs gameEventArgs = null)
     {
-        // 自己处理
+        // Handle locally
         SelfHandle(agent, eventId, gameEventArgs);
 
         if ((EventId)eventId > EventId.RoleSeparator && agent.OwnerType > GlobalConst.ActorTypeSeparator)
         {
-            // 全局非玩家事件，抛给所有玩家
+            // Global non-player event, broadcast to all players
             agent.Tell(()
                            =>
                        {
@@ -38,11 +38,11 @@ public static class EventDispatcherExtensions
     {
         agent.Tell(async () =>
         {
-            // 事件需要在本actor内执行，不可多线程执行，所以不能使用Task.WhenAll来处理
+            // Events must execute within this actor; multi-threaded execution is not allowed, so Task.WhenAll cannot be used
             var listeners = HotfixManager.FindListeners(agent.OwnerType, evtId);
             if (listeners.IsNullOrEmpty())
             {
-                // Log.Warn($"事件：{(EventID)evtId} 没有找到任何监听者");
+                // Log.Warn($"Event: {(EventID)evtId} no listeners found");
                 return;
             }
 
@@ -62,11 +62,11 @@ public static class EventDispatcherExtensions
     }
 
     /// <summary>
-    /// 分发事件
+    /// Dispatch event
     /// </summary>
-    /// <param name="agent">代理对象</param>
-    /// <param name="eventId">事件ID</param>
-    /// <param name="args">事件参数</param>
+    /// <param name="agent">Agent object</param>
+    /// <param name="eventId">Event ID</param>
+    /// <param name="args">Event arguments</param>
     public static void Dispatch(this IComponentAgent agent, EventId eventId, GameEventArgs args = null)
     {
         Dispatch(agent, (int)eventId, args);

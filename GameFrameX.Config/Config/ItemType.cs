@@ -14,27 +14,27 @@ namespace GameFrameX.Config
     public enum ItemType
     {
         /// <summary>
-        /// 道具
+        /// Item
         /// </summary>
         Item = 0,
         /// <summary>
-        /// 消耗品
+        /// Consumable
         /// </summary>
         Expendable = 1,
         /// <summary>
-        /// 装备
+        /// Equipment
         /// </summary>
         Equip = 2,
         /// <summary>
-        /// 碎片
+        /// Fragment
         /// </summary>
         Fragment = 3,
         /// <summary>
-        /// 材料
+        /// Material
         /// </summary>
         Material = 4,
         /// <summary>
-        /// 任务
+        /// Quest
         /// </summary>
         Task = 5,
     }

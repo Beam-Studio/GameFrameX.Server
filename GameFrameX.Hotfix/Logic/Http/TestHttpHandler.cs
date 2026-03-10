@@ -34,12 +34,12 @@
 namespace GameFrameX.Hotfix.Logic.Http;
 
 /// <summary>
-/// 测试
+/// Test
 /// http://localhost:20001/game/api/test
 /// </summary>
 [HttpMessageMapping(typeof(TestHttpHandler))]
 [HttpMessageResponse(typeof(HttpTestResponse))]
-[Description("测试通讯接口。没有实际用途")]
+[Description("Test communication endpoint. No practical use.")]
 public sealed class TestHttpHandler : BaseHttpHandler
 {
     /// <summary>
@@ -60,5 +60,5 @@ public sealed class TestHttpHandler : BaseHttpHandler
 
 public sealed class HttpTestResponse : HttpMessageResponseBase
 {
-    [Description("返回信息")] public string Message { get; set; }
+    [Description("Response message")] public string Message { get; set; }
 }

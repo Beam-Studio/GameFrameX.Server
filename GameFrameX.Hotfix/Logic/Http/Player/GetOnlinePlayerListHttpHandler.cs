@@ -36,13 +36,13 @@ using GameFrameX.Apps.Common.Session;
 namespace GameFrameX.Hotfix.Logic.Http.Player;
 
 /// <summary>
-/// 获取在线玩家列表
+/// Get online player list
 /// http://localhost:20001/game/api/GetOnlinePlayerList
 /// </summary>
 [HttpMessageMapping(typeof(GetOnlinePlayerListHttpHandler))]
 [HttpMessageRequest(typeof(GetOnlinePlayerListRequest))]
 [HttpMessageResponse(typeof(GetOnlinePlayerListResponse))]
-[Description("获取在线玩家列表")]
+[Description("Get online player list")]
 public sealed class GetOnlinePlayerListHttpHandler : BaseHttpHandler
 {
     /// <summary>
@@ -55,26 +55,26 @@ public sealed class GetOnlinePlayerListHttpHandler : BaseHttpHandler
     {
         GetOnlinePlayerListRequest parameters = (GetOnlinePlayerListRequest)request;
         var response = SessionManager.GetPageList(parameters.PageSize, parameters.PageIndex);
-        var res = HttpJsonResult.SuccessString("当前在线玩家", JsonHelper.Serialize(response));
+        var res = HttpJsonResult.SuccessString("Current online players", JsonHelper.Serialize(response));
         return Task.FromResult(res);
     }
 }
 
 public sealed class GetOnlinePlayerListResponse : HttpMessageResponseBase
 {
-    [Description("当前在线玩家列表")] public List<Session> List { get; set; }
+    [Description("Current online player list")] public List<Session> List { get; set; }
 }
 
 public sealed class GetOnlinePlayerListRequest : HttpMessageRequestBase
 {
     /// <summary>
-    /// 当前页
+    /// Current page
     /// </summary>
     [Required, Range(0, int.MaxValue)]
     public int PageIndex { get; set; }
 
     /// <summary>
-    /// 每页显示数量
+    /// Page size
     /// </summary>
     [Required, Range(1, 100)]
     public int PageSize { get; set; }

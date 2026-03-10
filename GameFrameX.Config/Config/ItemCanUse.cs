@@ -14,15 +14,15 @@ namespace GameFrameX.Config
     public enum ItemCanUse
     {
         /// <summary>
-        /// 不能使用
+        /// Cannot use
         /// </summary>
         CanNot = 0,
         /// <summary>
-        /// 只能单个使用
+        /// Can only use one at a time
         /// </summary>
         UseOne = 1,
         /// <summary>
-        /// 可以一键使用全部
+        /// Can use all at once
         /// </summary>
         UseTotal = 2,
     }

@@ -37,22 +37,22 @@ using GameFrameX.SuperSocket.WebSocket.Server;
 namespace GameFrameX.Hotfix.StartUp;
 
 /// <summary>
-/// 业务服务器.最后启动。
+/// Game server. Starts last.
 /// </summary>
 internal partial class AppStartUpHotfixGame
 {
     public override async Task StartAsync()
     {
-        // 启动网络服务
-        // 设置压缩和解压缩
+        // Start network service
+        // Set compression and decompression
         await StartServerAsync<DefaultMessageDecoderHandler, DefaultMessageEncoderHandler>(new DefaultMessageCompressHandler(), new DefaultMessageDecompressHandler(), HotfixManager.GetListHttpHandler(), HotfixManager.GetHttpHandler);
-        // 启动Http服务
+        // Start HTTP service
         // await HttpServer.Start(Setting.HttpPort, Setting.HttpsPort, HotfixManager.GetListHttpHandler(), HotfixManager.GetHttpHandler, null, Setting.HttpUrl);
     }
 
     public async Task RunServer(bool reload = false)
     {
-        // 不管是不是重启服务器，都要加载配置
+        // Always load config regardless of restart
         await ConfigComponent.Instance.LoadConfig();
         if (reload)
         {
@@ -66,19 +66,19 @@ internal partial class AppStartUpHotfixGame
 
     protected override ValueTask OnDisconnected(IAppSession appSession, CloseEventArgs disconnectEventArgs)
     {
-        LogHelper.Info("有外部客户端网络断开连接成功！。断开信息：" + appSession.SessionID + "  " + disconnectEventArgs.Reason);
+        LogHelper.Info("External client disconnected. Session: " + appSession.SessionID + "  " + disconnectEventArgs.Reason);
         SessionManager.Remove(appSession.SessionID);
         return ValueTask.CompletedTask;
     }
 
     protected override async ValueTask OnConnected(IAppSession appSession)
     {
-        LogHelper.Info("有外部客户端网络连接成功！。链接信息：SessionID:" + appSession.SessionID + " RemoteEndPoint:" + appSession.RemoteEndPoint);
+        LogHelper.Info("External client connected. SessionID:" + appSession.SessionID + " RemoteEndPoint:" + appSession.RemoteEndPoint);
         var netChannel = new DefaultNetWorkChannel(appSession, Setting, null, appSession is WebSocketSession);
         var count = SessionManager.Count();
         if (count > Setting.MaxClientCount)
         {
-            // 达到最大在线人数限制
+            // Max online player limit reached
             await netChannel.WriteAsync(new NotifyServerFullyLoaded(), (int)OperationStatusCode.ServerFullyLoaded);
             netChannel.Close();
             return;
@@ -89,7 +89,7 @@ internal partial class AppStartUpHotfixGame
     }
 
     /// <summary>
-    /// 处理收到的消息结果
+    /// Handle received message
     /// </summary>
     /// <param name="appSession"></param>
     /// <param name="message"></param>
@@ -109,27 +109,27 @@ internal partial class AppStartUpHotfixGame
             {
                 if (Setting.IsDebug && Setting.IsDebugReceive && Setting.IsDebugReceiveHeartBeat)
                 {
-                    LogHelper.Debug($"---收到{messagePackage.ToFormatMessageString(actorId)}");
+                    LogHelper.Debug($"---Received {messagePackage.ToFormatMessageString(actorId)}");
                 }
 
-                // 心跳消息回复
+                // Heartbeat message reply
                 ReplyHeartBeat(netWorkChannel, (MessageObject)messagePackage.DeserializeMessageObject());
                 return;
             }
 
             if (Setting.IsDebug && Setting.IsDebugReceive)
             {
-                LogHelper.Debug($"---收到{messagePackage.ToFormatMessageString(actorId)}");
+                LogHelper.Debug($"---Received {messagePackage.ToFormatMessageString(actorId)}");
             }
 
             var handler = HotfixManager.GetTcpHandler(messagePackage.Header.MessageId);
             if (handler == null)
             {
-                LogHelper.Error($"找不到[{messagePackage.Header.MessageId}][{messagePackage.MessageType}]对应的handler");
+                LogHelper.Error($"No handler found for [{messagePackage.Header.MessageId}][{messagePackage.MessageType}]");
                 return;
             }
 
-            // 执行消息分发处理
+            // Execute message dispatch
             try
             {
                 await InvokeMessageHandler(handler, messagePackage.DeserializeMessageObject(), netWorkChannel);
@@ -144,15 +144,15 @@ internal partial class AppStartUpHotfixGame
     public override async Task StopAsync(string message = "")
     {
         await base.StopAsync(message);
-        // 断开所有连接
+        // Disconnect all connections
         await SessionManager.RemoveAll();
-        // 取消所有未执行定时器
+        // Cancel all pending timers
         await QuartzTimer.Stop();
-        // 保证actor之前的任务都执行完毕
+        // Ensure all actor tasks complete
         await ActorManager.AllFinish();
-        // 存储所有数据
+        // Save all data
         await GlobalTimer.Stop();
-        // 删除所有actor
+        // Remove all actors
         await ActorManager.RemoveAll();
     }
 }

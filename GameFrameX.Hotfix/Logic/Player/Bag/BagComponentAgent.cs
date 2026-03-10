@@ -40,7 +40,7 @@ namespace GameFrameX.Hotfix.Logic.Player.Bag;
 public class BagComponentAgent : StateComponentAgent<BagComponent, BagState>
 {
     /// <summary>
-    /// 增加背包物品
+    /// Add bag items
     /// </summary>
     /// <param name="netWorkChannel"></param>
     /// <param name="message"></param>
@@ -48,7 +48,7 @@ public class BagComponentAgent : StateComponentAgent<BagComponent, BagState>
     /// <exception cref="NotImplementedException"></exception>
     public async Task OnAddBagItem(INetWorkChannel netWorkChannel, ReqAddItem message, RespAddItem response)
     {
-        // 校验物品是否存在
+        // Validate item exists
         foreach (var item in message.ItemDic)
         {
             var hasItem = ConfigComponent.Instance.GetConfig<TbItemConfig>().Get((int)item.Key);
@@ -67,14 +67,14 @@ public class BagComponentAgent : StateComponentAgent<BagComponent, BagState>
     }
 
     /// <summary>
-    /// 增加背包物品
+    /// Add bag items
     /// </summary>
     /// <param name="netWorkChannel"></param>
     /// <param name="itemDic"></param>
     /// <returns></returns>
     public async Task<BagState> UpdateChanged(INetWorkChannel netWorkChannel, Dictionary<int, long> itemDic)
     {
-        //将物品添加到背包
+        // Add items to bag
         var bagState = OwnerComponent.State;
         var notifyBagInfoChanged = new NotifyBagInfoChanged();
         foreach (var item in itemDic)
@@ -103,14 +103,14 @@ public class BagComponentAgent : StateComponentAgent<BagComponent, BagState>
     }
 
     /// <summary>
-    /// 减少背包物品
+    /// Remove bag items
     /// </summary>
     /// <param name="netWorkChannel"></param>
     /// <param name="message"></param>
     /// <param name="response"></param>
     public async Task OnRemoveBagItem(INetWorkChannel netWorkChannel, ReqRemoveItem message, RespRemoveItem response)
     {
-        // 校验物品是否存在
+        // Validate item exists
         foreach (var item in message.ItemDic)
         {
             var hasItem = ConfigComponent.Instance.GetConfig<TbItemConfig>().Get((int)item.Key);
@@ -121,7 +121,7 @@ public class BagComponentAgent : StateComponentAgent<BagComponent, BagState>
             }
         }
 
-        //将物品添加到背包
+        // Remove items from bag
         var bagState = OwnerComponent.State;
         if (bagState.IsNotNull())
         {
@@ -148,14 +148,14 @@ public class BagComponentAgent : StateComponentAgent<BagComponent, BagState>
     }
 
     /// <summary>
-    /// 减少背包物品
+    /// Use bag item
     /// </summary>
     /// <param name="netWorkChannel"></param>
     /// <param name="message"></param>
     /// <param name="response"></param>
     public async Task OnUseBagItem(INetWorkChannel netWorkChannel, ReqUseItem message, RespUseItem response)
     {
-        // 校验物品是否存在
+        // Validate item exists
         var hasItem = ConfigComponent.Instance.GetConfig<TbItemConfig>().Get(message.ItemId);
         if (hasItem.IsNull())
         {
@@ -163,7 +163,7 @@ public class BagComponentAgent : StateComponentAgent<BagComponent, BagState>
             return;
         }
 
-        //将物品从背包中删除
+        // Remove item from bag
         var bagState = OwnerComponent.State;
         if (bagState.List.TryGetValue(message.ItemId, out var value))
         {
@@ -173,7 +173,7 @@ public class BagComponentAgent : StateComponentAgent<BagComponent, BagState>
             if (value.Count < 0)
             {
                 value.Count = 0;
-                bagState.List.Remove(message.ItemId); // 移除
+                bagState.List.Remove(message.ItemId); // Remove
             }
 
             response.Count = value.Count;
@@ -196,7 +196,7 @@ public class BagComponentAgent : StateComponentAgent<BagComponent, BagState>
     }
 
     /// <summary>
-    /// 异步请求背包数据
+    /// Request bag info async
     /// </summary>
     /// <param name="netWorkChannel"></param>
     /// <param name="message"></param>

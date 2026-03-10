@@ -36,12 +36,12 @@ using GameFrameX.Apps.Common.Session;
 namespace GameFrameX.Hotfix.Logic.Http.Player;
 
 /// <summary>
-/// 获取在线人数
+/// Get online player count
 /// http://localhost:20001/game/api/GetOnlinePlayer
 /// </summary>
 [HttpMessageMapping(typeof(GetOnlinePlayerHttpHandler))]
 [HttpMessageResponse(typeof(GetOnlinePlayerResponse))]
-[Description("获取在线人数")]
+[Description("Get online player count")]
 public sealed class GetOnlinePlayerHttpHandler : BaseHttpHandler
 {
     /// <summary>
@@ -56,12 +56,12 @@ public sealed class GetOnlinePlayerHttpHandler : BaseHttpHandler
         {
             Count = SessionManager.Count(),
         };
-        var res = HttpJsonResult.SuccessString($"当前在线人数:{response.Count}", JsonHelper.Serialize(response));
+        var res = HttpJsonResult.SuccessString($"Current online count:{response.Count}", JsonHelper.Serialize(response));
         return Task.FromResult(res);
     }
 }
 
 public sealed class GetOnlinePlayerResponse : HttpMessageResponseBase
 {
-    [Description("当前在线人数")] public int Count { get; set; }
+    [Description("Current online count")] public int Count { get; set; }
 }

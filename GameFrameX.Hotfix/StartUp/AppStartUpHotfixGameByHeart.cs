@@ -36,7 +36,7 @@ namespace GameFrameX.Hotfix.StartUp;
 internal partial class AppStartUpHotfixGame
 {
     /// <summary>
-    /// 回复心跳消息
+    /// Reply to heartbeat message
     /// </summary>
     /// <param name="netWorkChannel"></param>
     /// <param name="messageObject"></param>
@@ -44,7 +44,7 @@ internal partial class AppStartUpHotfixGame
     {
         if (messageObject is ReqHeartBeat req)
         {
-            // LogHelper.Info("收到心跳请求:" + req.Timestamp);
+            // LogHelper.Info("Received heartbeat request:" + req.Timestamp);
             netWorkChannel.UpdateReceiveMessageTime();
             NotifyHeartBeat notifyHeartBeat = MessageObjectPoolHelper.Get<NotifyHeartBeat>();
             notifyHeartBeat.Timestamp = TimerHelper.UnixTimeMilliseconds();

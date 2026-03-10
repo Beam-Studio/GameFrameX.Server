@@ -39,10 +39,10 @@ using GameFrameX.NetWork.Messages;
 namespace GameFrameX.Hotfix.Logic.Http.Player;
 
 /// <summary>
-/// 账号登录
+/// Account login
 /// </summary>
 [HttpMessageMapping(typeof(ReqLoginHttpHandler))]
-[Description("账号登录,仅限前端调用")]
+[Description("Account login, frontend only")]
 public sealed class ReqLoginHttpHandler : BaseHttpHandler
 {
     public override async Task<MessageObject> Action(string ip, string url, Dictionary<string, object> parameters, MessageObject messageObject)
@@ -64,7 +64,7 @@ public sealed class ReqLoginHttpHandler : BaseHttpHandler
             loginState = await Register(accountId, reqLogin);
         }
 
-        // 构建账号登录返回信息
+        // Build account login response
         respLogin.Code = loginState.State;
         respLogin.CreateTime = loginState.CreateTime;
         respLogin.Level = loginState.Level;

@@ -14,11 +14,11 @@ namespace GameFrameX.Config
     public enum GiftUIType
     {
         /// <summary>
-        /// 普通界面
+        /// Normal UI
         /// </summary>
         Normal = 0,
         /// <summary>
-        /// 特殊界面
+        /// Special UI
         /// </summary>
         Style_1 = 1,
     }

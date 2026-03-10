@@ -36,25 +36,25 @@ using GameFrameX.Core.Abstractions.Events;
 namespace GameFrameX.Apps.Common.EventData;
 
 /// <summary>
-/// 发送道具给玩家
+/// Event args for sending items to a player
 /// </summary>
 public sealed class PlayerSendItemEventArgs : GameEventArgs
 {
     /// <summary>
-    /// 玩家ID
+    /// Player ID
     /// </summary>
     public long PlayerId { get; }
 
     /// <summary>
-    /// 道具列表，键为道具ID，值为道具数量
+    /// Item list; key is item ID, value is item count
     /// </summary>
     public Dictionary<int, long> Items { get; }
 
     /// <summary>
-    /// 构造函数
+    /// Constructor
     /// </summary>
-    /// <param name="playerId">玩家ID</param>
-    /// <param name="items">道具列表</param>
+    /// <param name="playerId">Player ID</param>
+    /// <param name="items">Item list</param>
     public PlayerSendItemEventArgs(long playerId, Dictionary<int, long> items)
     {
         PlayerId = playerId;

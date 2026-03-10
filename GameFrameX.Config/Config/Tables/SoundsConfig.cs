@@ -45,15 +45,15 @@ namespace GameFrameX.Config.Tables
         /// </summary>
         public int Id { private set; get; }
         /// <summary>
-        /// 声音所属组
+        /// Sound group name
         /// </summary>
         public string GroupName { private set; get; }
         /// <summary>
-        /// 声音所在的路径
+        /// Sound file path
         /// </summary>
         public string Path { private set; get; }
         /// <summary>
-        /// 声音标题Key
+        /// Sound title key
         /// </summary>
         public string Title { private set; get; }
         public string CharacterName { private set; get; }

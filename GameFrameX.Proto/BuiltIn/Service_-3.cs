@@ -36,55 +36,55 @@ using ProtoBuf;
 namespace GameFrameX.Proto.BuiltIn;
 
 /// <summary>
-/// 请求注册服务
+/// Request service registration
 /// </summary>
 [MessageTypeHandler(((-3) << 16) + 101, (byte)MessageOperationType.ServiceRegister)]
 public partial class ReqServiceRegister : MessageObject, IRequestMessage
 {
     /// <summary>
-    ///  服务器类型
+    /// Server type
     /// </summary>
     [ProtoMember(1)]
     public string ServerType { get; set; }
 
     /// <summary>
-    /// 服务器名称
+    /// Server name
     /// </summary>
     [ProtoMember(2)]
     public string ServerName { get; set; }
 
     /// <summary>
-    /// 内部服务器地址
+    /// Internal server address
     /// </summary>
     [ProtoMember(3)]
     public string InnerHost { get; set; }
 
     /// <summary>
-    /// 内部服务器端口
+    /// Internal server port
     /// </summary>
     [ProtoMember(4)]
     public ushort InnerPort { get; set; }
 
     /// <summary>
-    /// 外部服务器地址
+    /// External server address
     /// </summary>
     [ProtoMember(5)]
     public string OuterHost { get; set; }
 
     /// <summary>
-    /// 外部服务器端口
+    /// External server port
     /// </summary>
     [ProtoMember(6)]
     public ushort OuterPort { get; set; }
 
     /// <summary>
-    /// 服务器ID
+    /// Server ID
     /// </summary>
     [ProtoMember(7)]
     public long ServerId { get; set; }
 
     /// <summary>
-    /// 服务器实例ID
+    /// Server instance ID
     /// </summary>
     [ProtoMember(8)]
     public long ServerInstanceId { get; set; }
@@ -103,19 +103,19 @@ public partial class ReqServiceRegister : MessageObject, IRequestMessage
 }
 
 /// <summary>
-/// 请求注销服务
+/// Request service unregistration
 /// </summary>
 [MessageTypeHandler(((-3) << 16) + 102, (byte)MessageOperationType.ServiceUnRegister)]
 public partial class ReqServiceUnRegister : MessageObject, IRequestMessage
 {
     /// <summary>
-    /// 服务器ID
+    /// Server ID
     /// </summary>
     [ProtoMember(7)]
     public long ServerId { get; set; }
 
     /// <summary>
-    /// 服务器实例ID
+    /// Server instance ID
     /// </summary>
     [ProtoMember(8)]
     public long ServerInstanceId { get; set; }
@@ -128,31 +128,31 @@ public partial class ReqServiceUnRegister : MessageObject, IRequestMessage
 }
 
 /// <summary>
-/// 服务上线
+/// Service online notification
 /// </summary>
 [MessageTypeHandler(((-3) << 16) + 110, (byte)MessageOperationType.NotifyServiceOnLine)]
 public partial class NotifyServiceOnLine : MessageObject, IResponseMessage
 {
     /// <summary>
-    ///  服务器类型
+    /// Server type
     /// </summary>
     [ProtoMember(1)]
     public string ServerType { get; set; }
 
     /// <summary>
-    /// 服务器名称
+    /// Server name
     /// </summary>
     [ProtoMember(2)]
     public string ServerName { get; set; }
 
     /// <summary>
-    /// 服务器ID
+    /// Server ID
     /// </summary>
     [ProtoMember(3)]
     public long ServerId { get; set; }
 
     /// <summary>
-    /// 返回的错误码
+    /// Response error code
     /// </summary>
     [ProtoMember(888)]
     public int ErrorCode { get; set; }
@@ -167,31 +167,31 @@ public partial class NotifyServiceOnLine : MessageObject, IResponseMessage
 }
 
 /// <summary>
-/// 服务下线
+/// Service offline notification
 /// </summary>
 [MessageTypeHandler(((-3) << 16) + 111, (byte)MessageOperationType.NotifyServiceOffLine)]
 public partial class NotifyServiceOffLine : MessageObject, IResponseMessage
 {
     /// <summary>
-    ///  服务器类型
+    /// Server type
     /// </summary>
     [ProtoMember(1)]
     public string ServerType { get; set; }
 
     /// <summary>
-    /// 服务器名称
+    /// Server name
     /// </summary>
     [ProtoMember(2)]
     public string ServerName { get; set; }
 
     /// <summary>
-    /// 服务器ID
+    /// Server ID
     /// </summary>
     [ProtoMember(3)]
     public long ServerId { get; set; }
 
     /// <summary>
-    /// 返回的错误码
+    /// Response error code
     /// </summary>
     [ProtoMember(888)]
     public int ErrorCode { get; set; }

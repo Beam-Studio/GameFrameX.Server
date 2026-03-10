@@ -46,7 +46,7 @@ public class ServerComponentAgent : StateComponentAgent<ServerComponent, ServerS
         var isContinue = await base.Active();
         if (isContinue)
         {
-            // 跨天定时器
+            // Cross-day timer
             WithCronExpression<CrossDayTimeHandler>("0 0 0 * * ? *");
             if (State.FirstStartTime == default)
             {
@@ -90,13 +90,13 @@ public class ServerComponentAgent : StateComponentAgent<ServerComponent, ServerS
 
     private Task TestDelayTimer()
     {
-        LogHelper.Debug("ServerCompAgent.TestDelayTimer.延时3秒执行.执行一次");
+        LogHelper.Debug("ServerCompAgent.TestDelayTimer. Delayed 3 seconds. Execute once.");
         return Task.CompletedTask;
     }
 
     private Task TestScheduleTimer()
     {
-        LogHelper.Debug("ServerCompAgent.TestSchedueTimer.延时1秒执行.每隔10秒执行");
+        LogHelper.Debug("ServerCompAgent.TestScheduleTimer. Delayed 1 second. Every 10 seconds.");
         //
         // var states = await GameDb.FindListAsync<LoginState>(m => m.Id != 0);
         // LOGGER.Debug(states);
@@ -121,7 +121,7 @@ public class ServerComponentAgent : StateComponentAgent<ServerComponent, ServerS
 
 
     /// <summary>
-    /// 获取服务器开服启动时间
+    /// Get server first start time
     /// </summary>
     /// <returns></returns>
     [Service]
@@ -152,7 +152,7 @@ public class ServerComponentAgent : StateComponentAgent<ServerComponent, ServerS
         return Task.FromResult(false);
     }
 
-    /*******************演示代码**************************/
+    /******************* Demo code **************************/
     [Service]
     [ThreadSafe]
     public virtual int DoSomething0()
@@ -196,16 +196,16 @@ public class ServerComponentAgent : StateComponentAgent<ServerComponent, ServerS
     }
 
     /// <summary>
-    /// 跨天定时器调用
+    /// Cross-day timer handler
     /// </summary>
     private class CrossDayTimeHandler : TimerHandler<ServerComponentAgent>
     {
         protected override async Task HandleTimer(ServerComponentAgent agent, GameEventArgs gameEventArgs)
         {
-            LogHelper.Debug($"ServerCompAgent.CrossDayTimeHandler.跨天定时器执行{TimerHelper.CurrentDateTimeWithUtcFormat()}");
+            LogHelper.Debug($"ServerCompAgent.CrossDayTimeHandler. Cross-day timer executed {TimerHelper.CurrentDateTimeWithUtcFormat()}");
             await ActorManager.RoleCrossDay(1);
             await ActorManager.CrossDay(1, GlobalConst.ActorTypeServer);
         }
     }
-    /*******************演示代码**************************/
+    /******************* Demo code **************************/
 }

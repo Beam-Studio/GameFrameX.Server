@@ -65,59 +65,59 @@ namespace GameFrameX.Config.Local
         /// </summary>
         public string Key { private set; get; }
         /// <summary>
-        /// 简体中心
+        /// Simplified Chinese
         /// </summary>
         public string ChineseSimplified { private set; get; }
         /// <summary>
-        /// 繁体中心
+        /// Traditional Chinese
         /// </summary>
         public string ChineseTraditional { private set; get; }
         /// <summary>
-        /// 英语
+        /// English
         /// </summary>
         public string English { private set; get; }
         /// <summary>
-        /// 日语
+        /// Japanese
         /// </summary>
         public string Japanese { private set; get; }
         /// <summary>
-        /// 韩语
+        /// Korean
         /// </summary>
         public string Korean { private set; get; }
         /// <summary>
-        /// 泰语
+        /// Thai
         /// </summary>
         public string Thai { private set; get; }
         /// <summary>
-        /// 印尼语
+        /// Indonesian
         /// </summary>
         public string Indonesian { private set; get; }
         /// <summary>
-        /// 法语
+        /// French
         /// </summary>
         public string French { private set; get; }
         /// <summary>
-        /// 德语
+        /// German
         /// </summary>
         public string German { private set; get; }
         /// <summary>
-        /// 俄语
+        /// Russian
         /// </summary>
         public string Russian { private set; get; }
         /// <summary>
-        /// 意大利语
+        /// Italian
         /// </summary>
         public string Italian { private set; get; }
         /// <summary>
-        /// 葡萄牙语
+        /// Portuguese
         /// </summary>
         public string PortuguesePortugal { private set; get; }
         /// <summary>
-        /// 西班牙语
+        /// Spanish
         /// </summary>
         public string Spanish { private set; get; }
         /// <summary>
-        /// 越南语
+        /// Vietnamese
         /// </summary>
         public string Vietnamese { private set; get; }
 

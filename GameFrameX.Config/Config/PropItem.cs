@@ -35,11 +35,11 @@ namespace GameFrameX.Config
         }
 
         /// <summary>
-        /// 道具id
+        /// Item ID
         /// </summary>
         public int Id { private set; get; }
         /// <summary>
-        /// 道具数量
+        /// Item count
         /// </summary>
         public int Count { private set; get; }
 

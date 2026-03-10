@@ -39,10 +39,10 @@ using GameFrameX.NetWork.Messages;
 namespace GameFrameX.Hotfix.Logic.Http.Player;
 
 /// <summary>
-/// 角色创建
+/// Character creation
 /// </summary>
 [HttpMessageMapping(typeof(ReqPlayerCreateHttpHandler))]
-[Description("角色创建,仅限前端调用")]
+[Description("Character creation, frontend only")]
 public sealed class ReqPlayerCreateHttpHandler : BaseHttpHandler
 {
     public override async Task<MessageObject> Action(string ip, string url, Dictionary<string, object> paramMap, MessageObject messageObject)

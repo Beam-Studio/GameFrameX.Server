@@ -39,10 +39,10 @@ using GameFrameX.NetWork.Messages;
 namespace GameFrameX.Hotfix.Logic.Http.Player;
 
 /// <summary>
-/// 获取角色列表
+/// Get character list
 /// </summary>
 [HttpMessageMapping(typeof(ReqPlayerListHttpHandler))]
-[Description("获取角色列表,仅限前端调用")]
+[Description("Get character list, frontend only")]
 public sealed class ReqPlayerListHttpHandler : BaseHttpHandler
 {
     public override async Task<MessageObject> Action(string ip, string url, Dictionary<string, object> paramMap, MessageObject messageObject)

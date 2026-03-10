@@ -1,31 +1,22 @@
 ﻿// ==========================================================================================
-//  GameFrameX 组织及其衍生项目的版权、商标、专利及其他相关权利
-//  GameFrameX organization and its derivative projects' copyrights, trademarks, patents, and related rights
-//  均受中华人民共和国及相关国际法律法规保护。
-//  are protected by the laws of the People's Republic of China and relevant international regulations.
-//  
-//  使用本项目须严格遵守相应法律法规及开源许可证之规定。
-//  Usage of this project must strictly comply with applicable laws, regulations, and open-source licenses.
-//  
-//  本项目采用 MIT 许可证与 Apache License 2.0 双许可证分发，
-//  This project is dual-licensed under the MIT License and Apache License 2.0,
-//  完整许可证文本请参见源代码根目录下的 LICENSE 文件。
-//  please refer to the LICENSE file in the root directory of the source code for the full license text.
-//  
-//  禁止利用本项目实施任何危害国家安全、破坏社会秩序、
-//  It is prohibited to use this project to engage in any activities that endanger national security, disrupt social order,
-//  侵犯他人合法权益等法律法规所禁止的行为！
-//  or infringe upon the legitimate rights and interests of others, as prohibited by laws and regulations!
-//  因基于本项目二次开发所产生的一切法律纠纷与责任，
-//  Any legal disputes and liabilities arising from secondary development based on this project
-//  本项目组织与贡献者概不承担。
-//  shall be borne solely by the developer; the project organization and contributors assume no responsibility.
-//  
-//  GitHub 仓库：https://github.com/GameFrameX
+//  Copyrights, trademarks, patents, and related rights of the GameFrameX organization
+//  and its derivative projects are protected by the laws of the People's Republic of China
+//  and relevant international regulations.
+//
+//  Usage of this project must strictly comply with applicable laws, regulations,
+//  and open-source licenses.
+//
+//  This project is dual-licensed under the MIT License and Apache License 2.0.
+//  Please refer to the LICENSE file in the root directory for the full license text.
+//
+//  It is prohibited to use this project for any activities that endanger national security,
+//  disrupt social order, or infringe upon the legitimate rights of others.
+//  Any legal disputes arising from secondary development based on this project
+//  shall be borne solely by the developer; the project organization and contributors
+//  assume no responsibility.
+//
 //  GitHub Repository: https://github.com/GameFrameX
-//  Gitee  仓库：https://gitee.com/GameFrameX
 //  Gitee Repository:  https://gitee.com/GameFrameX
-//  官方文档：https://gameframex.doc.alianblank.com/
 //  Official Documentation: https://gameframex.doc.alianblank.com/
 // ==========================================================================================
 
@@ -35,7 +26,7 @@ using GameFrameX.Foundation.Utility;
 namespace GameFrameX.Launcher.StartUp;
 
 /// <summary>
-/// 游戏服务器
+/// Game server
 /// </summary>
 [StartUpTag(GlobalConst.GameServiceName)]
 internal sealed class AppStartUpGame : AppStartUpBase
@@ -45,49 +36,49 @@ internal sealed class AppStartUpGame : AppStartUpBase
         string exitMessage = null;
         try
         {
-            LogHelper.Info($"开始启动服务器{Setting.ServerType}");
+            LogHelper.Info($"Starting server {Setting.ServerType}");
             var hotfixPath = Directory.GetCurrentDirectory() + "/hotfix";
             if (!Directory.Exists(hotfixPath))
             {
                 Directory.CreateDirectory(hotfixPath);
             }
 
-            LogHelper.Debug("开始配置Actor限制逻辑...");
+            LogHelper.Debug("Configuring actor limit rules...");
             ActorLimit.Init(ActorLimit.RuleType.None);
-            LogHelper.Debug("配置Actor限制逻辑结束...");
+            LogHelper.Debug("Actor limit rules configured.");
 
-            LogHelper.Debug("开始启动数据库服务...");
+            LogHelper.Debug("Starting database service...");
             var initResult = await GameDb.Init<MongoDbService>(new DbOptions { ConnectionString = Setting.DataBaseUrl, Name = Setting.DataBaseName, });
             if (initResult == false)
             {
-                throw new InvalidOperationException("数据库服务启动失败");
+                throw new InvalidOperationException("Failed to start database service");
             }
 
-            LogHelper.DebugConsole("启动数据库服务 结束...");
+            LogHelper.DebugConsole("Database service started.");
 
-            LogHelper.DebugConsole("注册组件开始...");
+            LogHelper.DebugConsole("Registering components...");
             await ComponentRegister.Init(typeof(AppsHandler).Assembly);
-            LogHelper.DebugConsole("注册组件结束...");
+            LogHelper.DebugConsole("Components registered.");
 
-            LogHelper.DebugConsole("开始加载热更新模块...");
+            LogHelper.DebugConsole("Loading hotfix module...");
             await HotfixManager.LoadHotfixModule(Setting);
-            LogHelper.DebugConsole("加载热更新模块结束...");
+            LogHelper.DebugConsole("Hotfix module loaded.");
 
-            LogHelper.DebugConsole("进入游戏主循环...");
+            LogHelper.DebugConsole("Entering game main loop...");
             GlobalSettings.LaunchTime = TimerHelper.GetUtcNow();
             GlobalSettings.IsAppRunning = true;
-            LogHelper.Info($"服务器{Setting.ServerType}启动结束...");
+            LogHelper.Info($"Server {Setting.ServerType} started.");
             exitMessage = await AppExitToken;
         }
         catch (Exception e)
         {
-            LogHelper.Info($"服务器执行异常，e:{e}");
+            LogHelper.Info($"Server execution exception: {e}");
             LogHelper.Fatal(e);
         }
 
-        LogHelper.Info("退出服务器开始");
+        LogHelper.Info("Shutting down server...");
         await HotfixManager.Stop(exitMessage);
-        LogHelper.Info("退出服务器成功");
+        LogHelper.Info("Server shut down successfully.");
     }
 
     protected override void Init()

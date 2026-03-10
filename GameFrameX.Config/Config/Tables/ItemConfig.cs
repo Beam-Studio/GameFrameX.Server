@@ -86,95 +86,95 @@ namespace GameFrameX.Config.Tables
         public int Id { private set; get; }
         public string Name { private set; get; }
         /// <summary>
-        /// 道具类型
+        /// Item type
         /// </summary>
         public ItemType Type { private set; get; }
         /// <summary>
-        /// 子类别
+        /// Sub type
         /// </summary>
         public ItemSubType SubType { private set; get; }
         /// <summary>
-        /// 是否提示使用
+        /// Usage prompt
         /// </summary>
         public ItemEPrompt EPrompt { private set; get; }
         /// <summary>
-        /// 能否使用
+        /// Whether it can be used
         /// </summary>
         public ItemCanUse CanUse { private set; get; }
         /// <summary>
-        /// 是否可分解
+        /// Whether it can be decomposed
         /// </summary>
         public bool IsDecompose { private set; get; }
         /// <summary>
-        /// 叠加数
+        /// Max stack count
         /// </summary>
         public int MaxNum { private set; get; }
         /// <summary>
-        /// 描述信息
+        /// Description
         /// </summary>
         public string Description { private set; get; }
         /// <summary>
-        /// 来源链接
+        /// Source link
         /// </summary>
         public System.Collections.Generic.List<int> ComeLink { private set; get; }
         /// <summary>
-        /// 图标链接
+        /// Icon path
         /// </summary>
         public string Icon { private set; get; }
         /// <summary>
-        /// 背景图链接
+        /// Background icon path
         /// </summary>
         public string BgIcon { private set; get; }
         /// <summary>
-        /// 颜色品级
+        /// Quality color level
         /// </summary>
         public ItemLevelColor LevelColor { private set; get; }
         /// <summary>
-        /// 是否公告
+        /// Whether it can be announced
         /// </summary>
         public bool CanAnnounce { private set; get; }
         /// <summary>
-        /// 点击使用后<br/>跳转位置
+        /// Redirect location after use
         /// </summary>
         public string LinkInfo { private set; get; }
         /// <summary>
-        /// 关联的功能序号
+        /// Associated function ID
         /// </summary>
         public int FunctionID { private set; get; }
         /// <summary>
-        /// 使用限制类别
+        /// Usage limit type
         /// </summary>
         public ItemUseLimiteType UseLimiteType { private set; get; }
         /// <summary>
-        /// 是否废弃
+        /// Whether it is deprecated
         /// </summary>
         public bool Abandon { private set; get; }
         /// <summary>
-        /// 使用时需要弹窗二次确认的描述
+        /// Requires confirmation dialog before use
         /// </summary>
         public bool DoubleCheckDesc { private set; get; }
         /// <summary>
-        /// 能否交换
+        /// Whether it can be traded
         /// </summary>
         public bool CanTrade { private set; get; }
         /// <summary>
-        /// 交换冷却CD<br/>
+        /// Trade cooldown
         /// </summary>
         public int TradeCD { private set; get; }
         /// <summary>
-        /// 赠送数量限制
+        /// Gift quantity limit
         /// </summary>
         public int TradeItemsLimit { private set; get; }
         /// <summary>
-        /// 可使用总次数
+        /// Total usage limit
         /// </summary>
         public int UseLinmit { private set; get; }
         /// <summary>
-        /// 到期时间
+        /// Expiration time
         /// </summary>
         public long? ExpireTime { private set; get; }
         /// <summary>
-        /// 是否记录日志
+        /// Whether to record log
         /// </summary>
         public bool IsRecordLog { private set; get; }
 

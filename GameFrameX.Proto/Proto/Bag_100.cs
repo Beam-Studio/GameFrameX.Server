@@ -14,25 +14,25 @@ namespace GameFrameX.Proto.Proto
     public sealed class BagItem
     {
         /// <summary>
-        /// 道具id
+        /// Item ID
         /// </summary>
         [ProtoMember(1)]
-        [System.ComponentModel.Description("道具id")]
+        [System.ComponentModel.Description("Item ID")]
         public int ItemId { get; set; }
 
         /// <summary>
-        /// 道具数量
+        /// Item count
         /// </summary>
         [ProtoMember(2)]
-        [System.ComponentModel.Description("道具数量")]
+        [System.ComponentModel.Description("Item count")]
         public long Count { get; set; }
     }
 
     /// <summary>
-    /// 请求背包数据
+    /// Request bag data
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("请求背包数据")]
+    [System.ComponentModel.Description("Request bag data")]
     [MessageTypeHandler(6553610)]
     public sealed class ReqBagInfo : MessageObject, IRequestMessage
     {
@@ -43,10 +43,10 @@ namespace GameFrameX.Proto.Proto
     }
 
     /// <summary>
-    /// 返回背包数据
+    /// Response bag data
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("返回背包数据")]
+    [System.ComponentModel.Description("Response bag data")]
     [MessageTypeHandler(6553611)]
     public sealed class RespBagInfo : MessageObject, IResponseMessage
     {
@@ -59,10 +59,10 @@ namespace GameFrameX.Proto.Proto
         public Dictionary<int, long> ItemDic { get; set; } = new Dictionary<int, long>();
 
         /// <summary>
-        /// 返回的错误码
+        /// Response error code
         /// </summary>
         [ProtoMember(2047)]
-        [System.ComponentModel.Description("返回的错误码")]
+        [System.ComponentModel.Description("Response error code")]
         public int ErrorCode { get; set; }
 
         public override void Clear()
@@ -81,24 +81,24 @@ namespace GameFrameX.Proto.Proto
     public sealed class NotifyBagItem : MessageObject, INotifyMessage
     {
         /// <summary>
-        /// 道具id
+        /// Item ID
         /// </summary>
         [ProtoMember(1)]
-        [System.ComponentModel.Description("道具id")]
+        [System.ComponentModel.Description("Item ID")]
         public int ItemId { get; set; }
 
         /// <summary>
-        /// 最终道具数量
+        /// Final item count
         /// </summary>
         [ProtoMember(2)]
-        [System.ComponentModel.Description("最终道具数量")]
+        [System.ComponentModel.Description("Final item count")]
         public long Count { get; set; }
 
         /// <summary>
-        /// 变化的值
+        /// Changed value
         /// </summary>
         [ProtoMember(3)]
-        [System.ComponentModel.Description("变化的值")]
+        [System.ComponentModel.Description("Changed value")]
         public long Value { get; set; }
 
         public override void Clear()
@@ -110,18 +110,18 @@ namespace GameFrameX.Proto.Proto
     }
 
     /// <summary>
-    /// 通知背包数据变化
+    /// Notify bag data changed
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("通知背包数据变化")]
+    [System.ComponentModel.Description("Notify bag data changed")]
     [MessageTypeHandler(6553613)]
     public sealed class NotifyBagInfoChanged : MessageObject, INotifyMessage
     {
         /// <summary>
-        /// 变化的道具，key:道具id，value:数量
+        /// Changed items, key: item ID, value: count
         /// </summary>
         [ProtoMember(1)]
-        [System.ComponentModel.Description("变化的道具，key:道具id，value:数量")]
+        [System.ComponentModel.Description("Changed items, key: item ID, value: count")]
         [ProtoMap(DisableMap = true)]
         public Dictionary<int, NotifyBagItem> ItemDic { get; set; } = new Dictionary<int, NotifyBagItem>();
 
@@ -132,18 +132,18 @@ namespace GameFrameX.Proto.Proto
     }
 
     /// <summary>
-    /// 请求合成宠物
+    /// Request pet composition
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("请求合成宠物")]
+    [System.ComponentModel.Description("Request pet composition")]
     [MessageTypeHandler(6553614)]
     public sealed class ReqComposePet : MessageObject, IRequestMessage
     {
         /// <summary>
-        /// 碎片id
+        /// Fragment ID
         /// </summary>
         [ProtoMember(1)]
-        [System.ComponentModel.Description("碎片id")]
+        [System.ComponentModel.Description("Fragment ID")]
         public int FragmentId { get; set; }
 
         public override void Clear()
@@ -153,25 +153,25 @@ namespace GameFrameX.Proto.Proto
     }
 
     /// <summary>
-    /// 返回合成宠物
+    /// Response pet composition
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("返回合成宠物")]
+    [System.ComponentModel.Description("Response pet composition")]
     [MessageTypeHandler(6553615)]
     public sealed class RespComposePet : MessageObject, IResponseMessage
     {
         /// <summary>
-        /// 合成宠物的Id
+        /// Composed pet ID
         /// </summary>
         [ProtoMember(1)]
-        [System.ComponentModel.Description("合成宠物的Id")]
+        [System.ComponentModel.Description("Composed pet ID")]
         public int PetId { get; set; }
 
         /// <summary>
-        /// 返回的错误码
+        /// Response error code
         /// </summary>
         [ProtoMember(2047)]
-        [System.ComponentModel.Description("返回的错误码")]
+        [System.ComponentModel.Description("Response error code")]
         public int ErrorCode { get; set; }
 
         public override void Clear()
@@ -182,25 +182,25 @@ namespace GameFrameX.Proto.Proto
     }
 
     /// <summary>
-    /// 请求使用道具
+    /// Request use item
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("请求使用道具")]
+    [System.ComponentModel.Description("Request use item")]
     [MessageTypeHandler(6553616)]
     public sealed class ReqUseItem : MessageObject, IRequestMessage
     {
         /// <summary>
-        /// 道具id
+        /// Item ID
         /// </summary>
         [ProtoMember(1)]
-        [System.ComponentModel.Description("道具id")]
+        [System.ComponentModel.Description("Item ID")]
         public int ItemId { get; set; }
 
         /// <summary>
-        /// 道具数量
+        /// Item count
         /// </summary>
         [ProtoMember(2)]
-        [System.ComponentModel.Description("道具数量")]
+        [System.ComponentModel.Description("Item count")]
         public long Count { get; set; }
 
         public override void Clear()
@@ -211,32 +211,32 @@ namespace GameFrameX.Proto.Proto
     }
 
     /// <summary>
-    /// 请求使用道具
+    /// Response use item
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("请求使用道具")]
+    [System.ComponentModel.Description("Response use item")]
     [MessageTypeHandler(6553617)]
     public sealed class RespUseItem : MessageObject, IResponseMessage
     {
         /// <summary>
-        /// 道具id
+        /// Item ID
         /// </summary>
         [ProtoMember(1)]
-        [System.ComponentModel.Description("道具id")]
+        [System.ComponentModel.Description("Item ID")]
         public int ItemId { get; set; }
 
         /// <summary>
-        /// 道具数量
+        /// Item count
         /// </summary>
         [ProtoMember(2)]
-        [System.ComponentModel.Description("道具数量")]
+        [System.ComponentModel.Description("Item count")]
         public long Count { get; set; }
 
         /// <summary>
-        /// 返回的错误码
+        /// Response error code
         /// </summary>
         [ProtoMember(2047)]
-        [System.ComponentModel.Description("返回的错误码")]
+        [System.ComponentModel.Description("Response error code")]
         public int ErrorCode { get; set; }
 
         public override void Clear()
@@ -248,25 +248,25 @@ namespace GameFrameX.Proto.Proto
     }
 
     /// <summary>
-    /// 丢弃物品请求
+    /// Request discard item
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("丢弃物品请求")]
+    [System.ComponentModel.Description("Request discard item")]
     [MessageTypeHandler(6553618)]
     public sealed class ReqDiscardItem : MessageObject, IRequestMessage
     {
         /// <summary>
-        /// 道具id
+        /// Item ID
         /// </summary>
         [ProtoMember(1)]
-        [System.ComponentModel.Description("道具id")]
+        [System.ComponentModel.Description("Item ID")]
         public int ItemId { get; set; }
 
         /// <summary>
-        /// 道具数量
+        /// Item count
         /// </summary>
         [ProtoMember(2)]
-        [System.ComponentModel.Description("道具数量")]
+        [System.ComponentModel.Description("Item count")]
         public long Count { get; set; }
 
         public override void Clear()
@@ -277,32 +277,32 @@ namespace GameFrameX.Proto.Proto
     }
 
     /// <summary>
-    /// 丢弃物品返回
+    /// Response discard item
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("丢弃物品返回")]
+    [System.ComponentModel.Description("Response discard item")]
     [MessageTypeHandler(6553619)]
     public sealed class RespDiscardItem : MessageObject, IResponseMessage
     {
         /// <summary>
-        /// 道具id
+        /// Item ID
         /// </summary>
         [ProtoMember(1)]
-        [System.ComponentModel.Description("道具id")]
+        [System.ComponentModel.Description("Item ID")]
         public int ItemId { get; set; }
 
         /// <summary>
-        /// 道具数量
+        /// Item count
         /// </summary>
         [ProtoMember(2)]
-        [System.ComponentModel.Description("道具数量")]
+        [System.ComponentModel.Description("Item count")]
         public long Count { get; set; }
 
         /// <summary>
-        /// 返回的错误码
+        /// Response error code
         /// </summary>
         [ProtoMember(2047)]
-        [System.ComponentModel.Description("返回的错误码")]
+        [System.ComponentModel.Description("Response error code")]
         public int ErrorCode { get; set; }
 
         public override void Clear()
@@ -314,18 +314,18 @@ namespace GameFrameX.Proto.Proto
     }
 
     /// <summary>
-    /// 出售道具
+    /// Sell item
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("出售道具")]
+    [System.ComponentModel.Description("Sell item")]
     [MessageTypeHandler(6553620)]
     public sealed class ReqSellItem : MessageObject, IRequestMessage
     {
         /// <summary>
-        /// 道具id
+        /// Item ID
         /// </summary>
         [ProtoMember(1)]
-        [System.ComponentModel.Description("道具id")]
+        [System.ComponentModel.Description("Item ID")]
         public int ItemId { get; set; }
 
         public override void Clear()
@@ -335,26 +335,26 @@ namespace GameFrameX.Proto.Proto
     }
 
     /// <summary>
-    /// 出售道具
+    /// Sell item response
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("出售道具")]
+    [System.ComponentModel.Description("Sell item response")]
     [MessageTypeHandler(6553621)]
     public sealed class RespItemChange : MessageObject, IResponseMessage
     {
         /// <summary>
-        /// 变化的道具
+        /// Changed items
         /// </summary>
         [ProtoMember(1)]
-        [System.ComponentModel.Description("变化的道具")]
+        [System.ComponentModel.Description("Changed items")]
         [ProtoMap(DisableMap = true)]
         public Dictionary<long, long> ItemDic { get; set; } = new Dictionary<long, long>();
 
         /// <summary>
-        /// 返回的错误码
+        /// Response error code
         /// </summary>
         [ProtoMember(2047)]
-        [System.ComponentModel.Description("返回的错误码")]
+        [System.ComponentModel.Description("Response error code")]
         public int ErrorCode { get; set; }
 
         public override void Clear()
@@ -365,10 +365,10 @@ namespace GameFrameX.Proto.Proto
     }
 
     /// <summary>
-    /// 增加道具
+    /// Add items
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("增加道具")]
+    [System.ComponentModel.Description("Add items")]
     [MessageTypeHandler(6553622)]
     public sealed class ReqAddItem : MessageObject, IRequestMessage
     {
@@ -387,26 +387,26 @@ namespace GameFrameX.Proto.Proto
     }
 
     /// <summary>
-    /// 增加道具返回
+    /// Add items response
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("增加道具返回")]
+    [System.ComponentModel.Description("Add items response")]
     [MessageTypeHandler(6553623)]
     public sealed class RespAddItem : MessageObject, IResponseMessage
     {
         /// <summary>
-        /// 变化的道具
+        /// Changed items
         /// </summary>
         [ProtoMember(1)]
-        [System.ComponentModel.Description("变化的道具")]
+        [System.ComponentModel.Description("Changed items")]
         [ProtoMap(DisableMap = true)]
         public Dictionary<int, long> ItemDic { get; set; } = new Dictionary<int, long>();
 
         /// <summary>
-        /// 返回的错误码
+        /// Response error code
         /// </summary>
         [ProtoMember(2047)]
-        [System.ComponentModel.Description("返回的错误码")]
+        [System.ComponentModel.Description("Response error code")]
         public int ErrorCode { get; set; }
 
         public override void Clear()
@@ -417,10 +417,10 @@ namespace GameFrameX.Proto.Proto
     }
 
     /// <summary>
-    /// 减少道具
+    /// Remove items
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("减少道具")]
+    [System.ComponentModel.Description("Remove items")]
     [MessageTypeHandler(6553624)]
     public sealed class ReqRemoveItem : MessageObject, IRequestMessage
     {
@@ -439,26 +439,26 @@ namespace GameFrameX.Proto.Proto
     }
 
     /// <summary>
-    /// 减少道具返回
+    /// Remove items response
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("减少道具返回")]
+    [System.ComponentModel.Description("Remove items response")]
     [MessageTypeHandler(6553625)]
     public sealed class RespRemoveItem : MessageObject, IResponseMessage
     {
         /// <summary>
-        /// 变化的道具
+        /// Changed items
         /// </summary>
         [ProtoMember(1)]
-        [System.ComponentModel.Description("变化的道具")]
+        [System.ComponentModel.Description("Changed items")]
         [ProtoMap(DisableMap = true)]
         public Dictionary<int, long> ItemDic { get; set; } = new Dictionary<int, long>();
 
         /// <summary>
-        /// 返回的错误码
+        /// Response error code
         /// </summary>
         [ProtoMember(2047)]
-        [System.ComponentModel.Description("返回的错误码")]
+        [System.ComponentModel.Description("Response error code")]
         public int ErrorCode { get; set; }
 
         public override void Clear()

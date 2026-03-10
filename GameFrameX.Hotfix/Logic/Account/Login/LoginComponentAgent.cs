@@ -57,7 +57,7 @@ public class LoginComponentAgent : StateComponentAgent<LoginComponent, LoginStat
             loginState = await OwnerComponent.Register(accountId, reqLogin);
         }
 
-        // 构建账号登录返回信息
+        // Build account login response
         var respLogin = new RespLogin
         {
             UniqueId = reqLogin.UniqueId,
@@ -72,7 +72,7 @@ public class LoginComponentAgent : StateComponentAgent<LoginComponent, LoginStat
 
 
     /// <summary>
-    /// 创建角色
+    /// Create character
     /// </summary>
     /// <param name="workChannel"></param>
     /// <param name="reqPlayerCreate"></param>
@@ -95,7 +95,7 @@ public class LoginComponentAgent : StateComponentAgent<LoginComponent, LoginStat
     }
 
     /// <summary>
-    /// 获取角色列表
+    /// Get character list
     /// </summary>
     /// <param name="workChannel"></param>
     /// <param name="reqPlayerList"></param>

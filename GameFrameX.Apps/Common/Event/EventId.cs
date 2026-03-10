@@ -36,52 +36,52 @@ public enum EventId
     #region role event
 
     /// <summary>
-    /// 玩家事件
+    /// Session removed
     /// </summary>
     SessionRemove = 1000,
 
     /// <summary>
-    /// 玩家等级提升
+    /// Player level up
     /// </summary>
     RoleLevelUp = 1001,
 
     /// <summary>
-    /// 玩家vip改变
+    /// Player VIP changed
     /// </summary>
     RoleVipChange,
 
     /// <summary>
-    /// 玩家上线
+    /// Player online
     /// </summary>
     OnRoleOnline,
 
     /// <summary>
-    /// 玩家下线
+    /// Player offline
     /// </summary>
     OnRoleOffline,
 
     /// <summary>
-    /// 解锁用
+    /// Used for unlocking
     /// </summary>
     GotNewPet,
 
     /// <summary>
-    /// 玩家发送道具
+    /// Player send item
     /// </summary>
     PlayerSendItem,
 
     #endregion
 
     /// <summary>
-    /// 玩家事件分割点
+    /// Player event separator
     /// </summary>
     RoleSeparator = 8000,
 
     #region server event
 
-    //服务器事件
+    // Server events
     /// <summary>
-    /// 世界等级改变
+    /// World level changed
     /// </summary>
     WorldLevelChange,
 

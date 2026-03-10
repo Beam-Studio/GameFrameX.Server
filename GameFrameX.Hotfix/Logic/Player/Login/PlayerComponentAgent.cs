@@ -41,16 +41,16 @@ public class PlayerComponentAgent : StateComponentAgent<PlayerComponent, PlayerS
 {
     public async Task OnLogout()
     {
-        //移除在线玩家
+        // Remove online player
         var serverComp = await ActorManager.GetComponentAgent<ServerComponentAgent>();
         await serverComp.RemoveOnlineRole(ActorId);
-        //下线后会被自动回收
+        // Auto-recycled after going offline
         SetAutoRecycle(true);
         QuartzTimer.Remove(ScheduleIdSet);
     }
 
     /// <summary>
-    /// 使用角色ID登录
+    /// Login with role ID
     /// </summary>
     /// <param name="workChannel"></param>
     /// <param name="playerState"></param>
@@ -58,7 +58,7 @@ public class PlayerComponentAgent : StateComponentAgent<PlayerComponent, PlayerS
     /// <param name="response"></param>
     public async Task OnPlayerLogin(INetWorkChannel workChannel, PlayerState playerState, RespPlayerLogin response)
     {
-        // 更新连接会话数据
+        // Update connection session data
         SessionManager.UpdateSession(workChannel.GameAppSession.SessionID, playerState.Id, playerState.Id.ToString());
         response.Code = playerState.State;
         response.CreateTime = playerState.CreateTime;
@@ -71,7 +71,7 @@ public class PlayerComponentAgent : StateComponentAgent<PlayerComponent, PlayerS
             Avatar = playerState.Avatar,
         };
 
-        //加入在线玩家
+        // Add to online players
         var serverComp = await ActorManager.GetComponentAgent<ServerComponentAgent>();
         await serverComp.AddOnlineRole(ActorId);
     }

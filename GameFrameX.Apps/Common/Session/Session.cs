@@ -36,10 +36,10 @@ namespace GameFrameX.Apps.Common.Session;
 public sealed class Session
 {
     /// <summary>
-    /// 初始化
+    /// Initialize
     /// </summary>
-    /// <param name="sessionId">连接会话ID</param>
-    /// <param name="netWorkChannel">网络渠道对象</param>
+    /// <param name="sessionId">Connection session ID</param>
+    /// <param name="netWorkChannel">Network channel object</param>
     public Session(string sessionId, INetWorkChannel netWorkChannel)
     {
         WorkChannel = netWorkChannel;
@@ -48,54 +48,54 @@ public sealed class Session
     }
 
     /// <summary>
-    /// 全局会话ID
+    /// Global session ID
     /// </summary>
     public string SessionId { get; }
 
     /// <summary>
-    /// 玩家ID
+    /// Player ID
     /// </summary>
     public long PlayerId { get; private set; }
 
     /// <summary>
-    /// 连接时间
+    /// Connection time
     /// </summary>
     public long CreateTime { get; }
 
     /// <summary>
-    /// 连接上下文
+    /// Connection context
     /// </summary>
     [JsonIgnore]
     public INetWorkChannel WorkChannel { get; }
 
     /// <summary>
-    /// 连接标示，避免自己顶自己的号,客户端每次启动游戏生成一次/或者每个设备一个
+    /// Connection token to prevent self-displacement; generated once per client launch or per device
     /// </summary>
     public string Sign { get; private set; }
 
     /// <summary>
-    /// 设置玩家ID
+    /// Set player ID
     /// </summary>
-    /// <param name="playerId">玩家ID</param>
+    /// <param name="playerId">Player ID</param>
     public void SetPlayerId(long playerId)
     {
         PlayerId = playerId;
     }
 
     /// <summary>
-    /// 设置签名
+    /// Set sign
     /// </summary>
-    /// <param name="sign">签名</param>
+    /// <param name="sign">Sign</param>
     public void SetSign(string sign)
     {
         Sign = sign;
     }
 
     /// <summary>
-    /// 发送消息
+    /// Send a message
     /// </summary>
-    /// <param name="messageObject">消息对象</param>
-    /// <param name="errorCode">消息错误码</param>
+    /// <param name="messageObject">Message object</param>
+    /// <param name="errorCode">Error code</param>
     public async Task WriteAsync(MessageObject messageObject, int errorCode = 0)
     {
         if (WorkChannel != null)

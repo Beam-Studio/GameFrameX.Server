@@ -13,7 +13,7 @@ using GameFrameX.Core.Config;
 namespace GameFrameX.Config
 {
     /// <summary>
-    /// 属性
+    /// Property
     /// </summary>
     public sealed partial class Property : BeanBase
     {
@@ -52,39 +52,39 @@ namespace GameFrameX.Config
         }
 
         /// <summary>
-        /// 物理攻击
+        /// Physical attack
         /// </summary>
         public int PhysicalAttack { private set; get; }
         /// <summary>
-        /// 魔法攻击
+        /// Magic attack
         /// </summary>
         public int MagicAttack { private set; get; }
         /// <summary>
-        /// 物理防御
+        /// Physical defense
         /// </summary>
         public int PhysicalDefense { private set; get; }
         /// <summary>
-        /// 魔法防御
+        /// Magic defense
         /// </summary>
         public int MagicDefense { private set; get; }
         /// <summary>
-        /// 生命值
+        /// Health points
         /// </summary>
         public int Life { private set; get; }
         /// <summary>
-        /// 暴击
+        /// Critical hit
         /// </summary>
         public int Crit { private set; get; }
         /// <summary>
-        /// 爆伤
+        /// Critical damage
         /// </summary>
         public int BurstDamage { private set; get; }
         /// <summary>
-        /// 精准
+        /// Accuracy
         /// </summary>
         public int Precise { private set; get; }
         /// <summary>
-        /// 格挡
+        /// Block
         /// </summary>
         public int Block { private set; get; }
 

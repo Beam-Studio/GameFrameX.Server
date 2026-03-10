@@ -14,15 +14,15 @@ namespace GameFrameX.Config
     public enum ItemEPrompt
     {
         /// <summary>
-        /// 否
+        /// No
         /// </summary>
         NONE = 0,
         /// <summary>
-        /// 新装备
+        /// New equipment
         /// </summary>
         NEW_EQUIP = 1,
         /// <summary>
-        /// 红点
+        /// Red dot
         /// </summary>
         RED_POINT = 2,
     }

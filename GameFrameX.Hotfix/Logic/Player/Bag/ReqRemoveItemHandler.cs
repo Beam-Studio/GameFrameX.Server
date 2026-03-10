@@ -33,7 +33,7 @@
 namespace GameFrameX.Hotfix.Logic.Player.Bag;
 
 /// <summary>
-/// 减少背包物品
+/// Remove bag items
 /// </summary>
 [MessageMapping(typeof(ReqRemoveItem))]
 internal sealed class ReqRemoveItemHandler : PlayerRpcComponentHandler<BagComponentAgent, ReqRemoveItem, RespRemoveItem>

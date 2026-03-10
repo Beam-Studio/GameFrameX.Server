@@ -36,25 +36,25 @@ using ProtoBuf;
 namespace GameFrameX.Proto.BuiltIn;
 
 /// <summary>
-/// 请求注册服务（模块-10，协议101）
+/// Request player registration (module -10, protocol 101)
 /// </summary>
 [MessageTypeHandler(((-10) << 16) + 101, (byte)MessageOperationType.PlayerRegister)]
 public partial class ReqPlayerRegister : MessageObject, IRequestMessage
 {
     /// <summary>
-    /// 玩家ID
+    /// Player ID
     /// </summary>
     [ProtoMember(1)]
     public long PlayerId { get; set; }
 
     /// <summary>
-    /// 服务器ID
+    /// Server ID
     /// </summary>
     [ProtoMember(2)]
     public long ServerId { get; set; }
 
     /// <summary>
-    /// 服务器实例ID
+    /// Server instance ID
     /// </summary>
     [ProtoMember(3)]
     public long ServerInstanceId { get; set; }
@@ -68,25 +68,25 @@ public partial class ReqPlayerRegister : MessageObject, IRequestMessage
 }
 
 /// <summary>
-/// 请求注销服务（模块-10，协议102）
+/// Request player unregistration (module -10, protocol 102)
 /// </summary>
 [MessageTypeHandler(((-10) << 16) + 102, (byte)MessageOperationType.PlayerUnRegister)]
 public partial class ReqPlayerUnRegister : MessageObject, IRequestMessage
 {
     /// <summary>
-    /// 玩家ID
+    /// Player ID
     /// </summary>
     [ProtoMember(1)]
     public long PlayerId { get; set; }
 
     /// <summary>
-    /// 服务器ID
+    /// Server ID
     /// </summary>
     [ProtoMember(2)]
     public long ServerId { get; set; }
 
     /// <summary>
-    /// 服务器实例ID
+    /// Server instance ID
     /// </summary>
     [ProtoMember(3)]
     public long ServerInstanceId { get; set; }
@@ -100,25 +100,25 @@ public partial class ReqPlayerUnRegister : MessageObject, IRequestMessage
 }
 
 /// <summary>
-/// 通知玩家上线（模块-10，协议111）
+/// Notify player online (module -10, protocol 111)
 /// </summary>
 [MessageTypeHandler(((-10) << 16) + 111, (byte)MessageOperationType.NotifyPlayerOnLine)]
 public partial class NotifyPlayerOnLine : MessageObject, IRequestMessage
 {
     /// <summary>
-    /// 玩家ID
+    /// Player ID
     /// </summary>
     [ProtoMember(1)]
     public long PlayerId { get; set; }
 
     /// <summary>
-    /// 服务器ID
+    /// Server ID
     /// </summary>
     [ProtoMember(2)]
     public long ServerId { get; set; }
 
     /// <summary>
-    /// 服务器实例ID
+    /// Server instance ID
     /// </summary>
     [ProtoMember(3)]
     public long ServerInstanceId { get; set; }
@@ -132,25 +132,25 @@ public partial class NotifyPlayerOnLine : MessageObject, IRequestMessage
 }
 
 /// <summary>
-/// 通知玩家下线（模块-10，协议112）
+/// Notify player offline (module -10, protocol 112)
 /// </summary>
 [MessageTypeHandler(((-10) << 16) + 112, (byte)MessageOperationType.NotifyPlayerOffLine)]
 public partial class NotifyPlayerOffLine : MessageObject, IRequestMessage
 {
     /// <summary>
-    /// 玩家ID
+    /// Player ID
     /// </summary>
     [ProtoMember(1)]
     public long PlayerId { get; set; }
 
     /// <summary>
-    /// 服务器ID
+    /// Server ID
     /// </summary>
     [ProtoMember(2)]
     public long ServerId { get; set; }
 
     /// <summary>
-    /// 服务器实例ID
+    /// Server instance ID
     /// </summary>
     [ProtoMember(3)]
     public long ServerInstanceId { get; set; }

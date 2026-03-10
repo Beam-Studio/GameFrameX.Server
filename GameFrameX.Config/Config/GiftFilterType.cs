@@ -14,15 +14,15 @@ namespace GameFrameX.Config
     public enum GiftFilterType
     {
         /// <summary>
-        /// 无，全部获得
+        /// None, get all
         /// </summary>
         None = 0,
         /// <summary>
-        /// 随机获得N件
+        /// Randomly get N items
         /// </summary>
         Random = 1,
         /// <summary>
-        /// 自定义选择N件
+        /// Custom select N items
         /// </summary>
         Custom = 2,
     }

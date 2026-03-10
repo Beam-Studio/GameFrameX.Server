@@ -36,42 +36,42 @@ namespace GameFrameX.Apps.Player.Player.Entity;
 public sealed class PlayerState : CacheState
 {
     /// <summary>
-    /// 账号ID
+    /// Account ID
     /// </summary>
     public long AccountId { get; set; }
 
     /// <summary>
-    /// 玩家名
+    /// Player name
     /// </summary>
     public string Name { get; set; }
 
     /// <summary>
-    /// 玩家等级
+    /// Player level
     /// </summary>
     public uint Level { get; set; }
 
     /// <summary>
-    /// 性别
+    /// Gender
     /// </summary>
     public int Gender { get; set; }
 
     /// <summary>
-    /// 头像
+    /// Avatar
     /// </summary>
     public uint Avatar { get; set; }
 
     /// <summary>
-    /// 玩家状态
+    /// Player state
     /// </summary>
     public int State { get; set; }
 
     /// <summary>
-    /// 登录时间
+    /// Login time
     /// </summary>
     public DateTime LoginTime { get; set; }
 
     /// <summary>
-    /// 离线时间
+    /// Offline time
     /// </summary>
     public DateTime OfflineTime { get; set; }
 }

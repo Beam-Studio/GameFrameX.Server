@@ -7,18 +7,18 @@ using GameFrameX.NetWork.Messages;
 namespace GameFrameX.Proto.Proto
 {
     /// <summary>
-    /// 请求心跳
+    /// Request heartbeat
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("请求心跳")]
+    [System.ComponentModel.Description("Request heartbeat")]
     [MessageTypeHandler(655370)]
     public sealed class ReqHeartBeat : MessageObject, IRequestMessage, IHeartBeatMessage
     {
         /// <summary>
-        /// 时间戳
+        /// Timestamp
         /// </summary>
         [ProtoMember(1)]
-        [System.ComponentModel.Description("时间戳")]
+        [System.ComponentModel.Description("Timestamp")]
         public long Timestamp { get; set; }
 
         public override void Clear()
@@ -28,18 +28,18 @@ namespace GameFrameX.Proto.Proto
     }
 
     /// <summary>
-    /// 服务器通知心跳结果，因为有些业务需要对心跳结果做处理所以不做成RPC的方式处理
+    /// Server heartbeat result notification; uses notify instead of RPC since some logic needs to process heartbeat results
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("服务器通知心跳结果，因为有些业务需要对心跳结果做处理所以不做成RPC的方式处理")]
+    [System.ComponentModel.Description("Server heartbeat result notification; uses notify instead of RPC since some logic needs to process heartbeat results")]
     [MessageTypeHandler(655371)]
     public sealed class NotifyHeartBeat : MessageObject, INotifyMessage, IHeartBeatMessage
     {
         /// <summary>
-        /// 时间戳
+        /// Timestamp
         /// </summary>
         [ProtoMember(1)]
-        [System.ComponentModel.Description("时间戳")]
+        [System.ComponentModel.Description("Timestamp")]
         public long Timestamp { get; set; }
 
         public override void Clear()
@@ -49,10 +49,10 @@ namespace GameFrameX.Proto.Proto
     }
 
     /// <summary>
-    /// 通知客户端服务器人数已达上限
+    /// Notify client that server capacity is full
     /// </summary>
     [ProtoContract]
-    [System.ComponentModel.Description("通知客户端服务器人数已达上限")]
+    [System.ComponentModel.Description("Notify client that server capacity is full")]
     [MessageTypeHandler(655372)]
     public sealed class NotifyServerFullyLoaded : MessageObject, INotifyMessage
     {

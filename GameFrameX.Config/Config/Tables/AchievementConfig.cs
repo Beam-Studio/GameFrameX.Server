@@ -47,23 +47,23 @@ namespace GameFrameX.Config.Tables
         /// </summary>
         public int Id { private set; get; }
         /// <summary>
-        /// 成就对应的图标id
+        /// Achievement icon ID
         /// </summary>
         public int Image { private set; get; }
         /// <summary>
-        /// 成就Key
+        /// Achievement name key
         /// </summary>
         public string Name { private set; get; }
         /// <summary>
-        /// 成就内容Key
+        /// Achievement content key
         /// </summary>
         public string AchievementContent { private set; get; }
         /// <summary>
-        /// 未解锁文字key
+        /// Locked text key
         /// </summary>
         public string LockText { private set; get; }
         /// <summary>
-        /// 成就解锁条件
+        /// Achievement unlock conditions
         /// </summary>
         public System.Collections.Generic.List<int> AchievementUnlockCondition { private set; get; }
 

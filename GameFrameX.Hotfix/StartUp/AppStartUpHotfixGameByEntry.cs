@@ -48,7 +48,7 @@ internal partial class AppStartUpHotfixGame : AppStartUpBase, IHotfixBridge
 
         Init(setting.ServerType, setting);
         await RunServer();
-        // 启动定时器
+        // Start timer
         GlobalTimer.Start();
         await ComponentRegister.ActiveGlobalComponents();
         return true;
